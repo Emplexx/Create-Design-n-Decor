@@ -1,7 +1,7 @@
 package com.mangomilk.design_decor.registry;
 
-import com.jozufozu.flywheel.core.PartialModel;
 import com.mangomilk.design_decor.DesignDecor;
+import dev.engine_room.flywheel.lib.model.baked.PartialModel;
 
 public class CDDPartialModels {
 
@@ -34,11 +34,11 @@ public class CDDPartialModels {
 
 
     private static PartialModel block(String path) {
-        return new PartialModel(DesignDecor.asResource("block/" + path));
+        return PartialModel.of(DesignDecor.asResource("block/" + path));
     }
 
     private static PartialModel entity(String path) {
-        return new PartialModel(DesignDecor.asResource("entity/" + path));
+        return PartialModel.of(DesignDecor.asResource("entity/" + path));
     }
 
     public static void init() {

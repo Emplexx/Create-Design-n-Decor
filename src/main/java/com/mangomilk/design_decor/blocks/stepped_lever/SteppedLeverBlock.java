@@ -2,7 +2,6 @@ package com.mangomilk.design_decor.blocks.stepped_lever;
 
 import com.mangomilk.design_decor.registry.CDDBlockEntities;
 import com.mangomilk.design_decor.registry.CDDShapes;
-import com.mojang.math.Vector3f;
 import com.simibubi.create.foundation.block.IBE;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -28,6 +27,7 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import org.joml.Vector3f;
 
 public class SteppedLeverBlock extends FaceAttachedHorizontalDirectionalBlock implements IBE<SteppedLeverBlockEntity> {
 

@@ -2,7 +2,6 @@ package com.mangomilk.design_decor.blocks.railings;
 
 
 import com.mangomilk.design_decor.registry.CDDShapes;
-import com.simibubi.create.foundation.utility.VoxelShaper;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
