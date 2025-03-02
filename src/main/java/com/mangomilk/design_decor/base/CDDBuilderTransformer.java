@@ -23,7 +23,7 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.material.MaterialColor;
+import net.minecraft.world.level.material.MapColor;
 import net.minecraftforge.common.Tags;
 
 import java.util.function.Supplier;
@@ -111,10 +111,10 @@ public class CDDBuilderTransformer {
 
 
 
-    public static BlockEntry<Block> CastelBricks(String id, String lang, MaterialColor color, Block block) {
+    public static BlockEntry<Block> CastelBricks(String id, String lang, MapColor color, Block block) {
         DesignDecor.REGISTRATE.block(id + "_castel_brick_stairs", p -> new StairBlock(block.defaultBlockState(), p))
                 .initialProperties(() -> block)
-                .properties(p -> p.color(color))
+                .properties(p -> p.mapColor(color))
                 .properties(p -> p.destroyTime(1.25f))
                 .transform(pickaxeOnly())
                 .tag(MCBlockTag("stairs"))
@@ -129,7 +129,7 @@ public class CDDBuilderTransformer {
 
         DesignDecor.REGISTRATE.block(id + "_castel_brick_slab", SlabBlock::new)
                 .initialProperties(() -> block)
-                .properties(p -> p.color(color))
+                .properties(p -> p.mapColor(color))
                 .properties(p -> p.destroyTime(1f))
                 .transform(pickaxeOnly())
                 .tag(MCBlockTag("slabs"))
@@ -143,7 +143,7 @@ public class CDDBuilderTransformer {
 
         DesignDecor.REGISTRATE.block(id + "_castel_brick_wall", WallBlock::new)
                 .initialProperties(() -> block)
-                .properties(p -> p.color(color))
+                .properties(p -> p.mapColor(color))
                 .properties(p -> p.destroyTime(1.25f))
                 .transform(pickaxeOnly())
                 .tag(MCBlockTag("walls"))
@@ -158,7 +158,7 @@ public class CDDBuilderTransformer {
 
         return DesignDecor.REGISTRATE.block(id + "_castel_bricks", Block::new)
                 .initialProperties(() -> block)
-                .properties(p -> p.color(color))
+                .properties(p -> p.mapColor(color))
                 .properties(p -> p.destroyTime(1.25f))
                 .transform(pickaxeOnly())
                 .recipe((c, p) -> p.stonecutting(DataIngredient.tag(CreateItemTag("stone_types/" + id)), c::get, 1))
@@ -222,10 +222,10 @@ public class CDDBuilderTransformer {
                 .lang(lang + " Castel Bricks")
                 .register();
     }
-    public static BlockEntry<Block> CastelTiles(String id, String lang, MaterialColor color, Block block) {
+    public static BlockEntry<Block> CastelTiles(String id, String lang, MapColor color, Block block) {
         DesignDecor.REGISTRATE.block(id + "_castel_tile_stairs", p -> new StairBlock(block.defaultBlockState(), p))
                 .initialProperties(() -> block)
-                .properties(p -> p.color(color))
+                .properties(p -> p.mapColor(color))
                 .properties(p -> p.destroyTime(1.25f))
                 .transform(pickaxeOnly())
                 .tag(MCBlockTag("stairs"))
@@ -240,7 +240,7 @@ public class CDDBuilderTransformer {
 
         DesignDecor.REGISTRATE.block(id + "_castel_tile_slab", SlabBlock::new)
                 .initialProperties(() -> block)
-                .properties(p -> p.color(color))
+                .properties(p -> p.mapColor(color))
                 .properties(p -> p.destroyTime(1f))
                 .transform(pickaxeOnly())
                 .tag(MCBlockTag("slabs"))
@@ -254,7 +254,7 @@ public class CDDBuilderTransformer {
 
         DesignDecor.REGISTRATE.block(id + "_castel_tile_wall", WallBlock::new)
                 .initialProperties(() -> block)
-                .properties(p -> p.color(color))
+                .properties(p -> p.mapColor(color))
                 .properties(p -> p.destroyTime(1.25f))
                 .transform(pickaxeOnly())
                 .tag(MCBlockTag("walls"))
@@ -269,7 +269,7 @@ public class CDDBuilderTransformer {
 
         return DesignDecor.REGISTRATE.block(id + "_castel_tiles", Block::new)
                 .initialProperties(() -> block)
-                .properties(p -> p.color(color))
+                .properties(p -> p.mapColor(color))
                 .properties(p -> p.destroyTime(1.25f))
                 .transform(pickaxeOnly())
                 .recipe((c, p) -> p.stonecutting(DataIngredient.tag(CreateItemTag("stone_types/" + id)), c::get, 1))

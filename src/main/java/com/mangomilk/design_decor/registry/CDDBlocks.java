@@ -72,6 +72,7 @@ import com.mangomilk.design_decor.blocks.stepped_lever.SteppedLeverBlock;
 import com.simibubi.create.AllTags;
 import com.simibubi.create.content.decoration.encasing.EncasedCTBehaviour;
 import com.simibubi.create.content.kinetics.BlockStressDefaults;
+import com.simibubi.create.content.kinetics.crusher.CrushingWheelBlock;
 import com.simibubi.create.content.kinetics.simpleRelays.BracketedKineticBlockModel;
 import com.simibubi.create.foundation.block.ItemUseOverrides;
 import com.simibubi.create.foundation.block.connected.SimpleCTBehaviour;
@@ -97,7 +98,7 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.material.MaterialColor;
+import net.minecraft.world.level.material.MapColor;
 import net.minecraftforge.client.model.generators.ConfiguredModel;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.IForgeRegistry;
@@ -219,7 +220,7 @@ public static final BlockEntry<ScrewBlock> ZINC_SCREW = REGISTRATE.block("zinc_s
 
     public static final BlockEntry<Block> BRASS_LIGHT =
             REGISTRATE.block("brass_light", Block::new)
-                    .properties(p -> p.color(MaterialColor.GOLD))
+                    .properties(p -> p.mapColor(MapColor.GOLD))
                     .properties(p->p.lightLevel(s -> 15))
                     .initialProperties(SharedProperties::copperMetal)
                     .transform(pickaxeOnly())
@@ -229,7 +230,7 @@ public static final BlockEntry<ScrewBlock> ZINC_SCREW = REGISTRATE.block("zinc_s
                     .register();
     public static final BlockEntry<Block> COPPER_LIGHT =
             REGISTRATE.block("copper_light", Block::new)
-                    .properties(p -> p.color(MaterialColor.GOLD))
+                    .properties(p -> p.mapColor(MapColor.GOLD))
                     .properties(p->p.lightLevel(s -> 15))
                     .initialProperties(SharedProperties::copperMetal)
                     .transform(pickaxeOnly())
@@ -239,7 +240,7 @@ public static final BlockEntry<ScrewBlock> ZINC_SCREW = REGISTRATE.block("zinc_s
                     .register();
     public static final BlockEntry<Block> ZINC_LIGHT =
             REGISTRATE.block("zinc_light", Block::new)
-                    .properties(p -> p.color(MaterialColor.GOLD))
+                    .properties(p -> p.mapColor(MapColor.GOLD))
                     .properties(p->p.lightLevel(s -> 15))
                     .initialProperties(SharedProperties::copperMetal)
                     .transform(pickaxeOnly())
@@ -251,7 +252,7 @@ public static final BlockEntry<ScrewBlock> ZINC_SCREW = REGISTRATE.block("zinc_s
     public static final BlockEntry<FloodlightBlock> BRASS_FLOODLIGHT =
             REGISTRATE.block("brass_floodlight", FloodlightBlock::new)
                     .initialProperties(SharedProperties::copperMetal)
-                    .properties(p -> p.color(MaterialColor.TERRACOTTA_YELLOW))
+                    .properties(p -> p.mapColor(MapColor.TERRACOTTA_YELLOW))
                     .properties(BlockBehaviour.Properties::noOcclusion)
                     .properties(p -> p.lightLevel(s -> s.getValue(FloodlightBlock.TURNED_ON) ? 15 : 0))
                     .addLayer(() -> RenderType::cutout)
@@ -265,7 +266,7 @@ public static final BlockEntry<ScrewBlock> ZINC_SCREW = REGISTRATE.block("zinc_s
     public static final BlockEntry<FloodlightBlock> ANDESITE_FLOODLIGHT =
             REGISTRATE.block("andesite_floodlight", FloodlightBlock::new)
                     .initialProperties(SharedProperties::copperMetal)
-                    .properties(p -> p.color(MaterialColor.STONE))
+                    .properties(p -> p.mapColor(MapColor.STONE))
                     .properties(BlockBehaviour.Properties::noOcclusion)
                     .properties(p -> p.lightLevel(s -> s.getValue(FloodlightBlock.WATERLOGGED) == s.getValue(FloodlightBlock.TURNED_ON) ? 0 : !s.getValue(FloodlightBlock.WATERLOGGED) ? 12 : 8 ))
                     .addLayer(() -> RenderType::cutout)
@@ -279,7 +280,7 @@ public static final BlockEntry<ScrewBlock> ZINC_SCREW = REGISTRATE.block("zinc_s
     public static final BlockEntry<FloodlightBlock> COPPER_FLOODLIGHT =
             REGISTRATE.block("copper_floodlight", FloodlightBlock::new)
                     .initialProperties(SharedProperties::copperMetal)
-                    .properties(p -> p.color(MaterialColor.STONE))
+                    .properties(p -> p.mapColor(MapColor.STONE))
                     .properties(BlockBehaviour.Properties::noOcclusion)
                     .properties(p -> p.lightLevel(s -> s.getValue(FloodlightBlock.WATERLOGGED) == s.getValue(FloodlightBlock.TURNED_ON) ? 12 : 0 ))
                     .properties(p -> p.lightLevel(s -> !s.getValue(FloodlightBlock.WATERLOGGED) == s.getValue(FloodlightBlock.TURNED_ON) ? 6 : 0 ))
@@ -295,7 +296,7 @@ public static final BlockEntry<ScrewBlock> ZINC_SCREW = REGISTRATE.block("zinc_s
     public static final BlockEntry<IndustrialGearBlock> COGWHEEL =
             REGISTRATE.block("industrial_gear", IndustrialGearBlock::small)
                     .initialProperties(SharedProperties::softMetal)
-                    .properties(p -> p.color(MaterialColor.COLOR_GRAY))
+                    .properties(p -> p.mapColor(MapColor.COLOR_GRAY))
                     .properties(p -> p.sound(SoundType.NETHERITE_BLOCK))
                     .properties(BlockBehaviour.Properties::requiresCorrectToolForDrops)
                     .transform(pickaxeOnly())
@@ -310,7 +311,7 @@ public static final BlockEntry<ScrewBlock> ZINC_SCREW = REGISTRATE.block("zinc_s
     public static final BlockEntry<IndustrialGearBlock> LARGE_COGWHEEL =
             REGISTRATE.block("industrial_gear_large", IndustrialGearBlock::large)
                     .initialProperties(SharedProperties::softMetal)
-                    .properties(p -> p.color(MaterialColor.COLOR_GRAY))
+                    .properties(p -> p.mapColor(MapColor.COLOR_GRAY))
                     .properties(p -> p.sound(SoundType.NETHERITE_BLOCK))
                     .properties(BlockBehaviour.Properties::requiresCorrectToolForDrops)
                     .transform(pickaxeOnly())
@@ -668,7 +669,7 @@ public static final BlockEntry<ScrewBlock> ZINC_SCREW = REGISTRATE.block("zinc_s
     //CONTAINERS
     public static final BlockEntry<RedContainerBlock> RED_CONTAINER = REGISTRATE.block("red_container", RedContainerBlock::new)
             .initialProperties(SharedProperties::softMetal)
-            .properties(p -> p.color(MaterialColor.TERRACOTTA_RED))
+            .properties(p -> p.mapColor(MapColor.TERRACOTTA_RED))
             .properties(p -> p.sound(SoundType.NETHERITE_BLOCK)
                     .explosionResistance(1200))
             .transform(pickaxeOnly())
@@ -685,7 +686,7 @@ public static final BlockEntry<ScrewBlock> ZINC_SCREW = REGISTRATE.block("zinc_s
 
     public static final BlockEntry<BlueContainerBlock> BLUE_CONTAINER = REGISTRATE.block("blue_container",BlueContainerBlock::new)
             .initialProperties(SharedProperties::softMetal)
-            .properties(p -> p.color(MaterialColor.COLOR_BLUE))
+            .properties(p -> p.mapColor(MapColor.COLOR_BLUE))
             .properties(p -> p.sound(SoundType.NETHERITE_BLOCK)
                     .explosionResistance(1200))
             .transform(pickaxeOnly())
@@ -702,7 +703,7 @@ public static final BlockEntry<ScrewBlock> ZINC_SCREW = REGISTRATE.block("zinc_s
 
     public static final BlockEntry<GreenContainerBlock> GREEN_CONTAINER = REGISTRATE.block("green_container",GreenContainerBlock::new)
             .initialProperties(SharedProperties::softMetal)
-            .properties(p -> p.color(MaterialColor.COLOR_GREEN))
+            .properties(p -> p.mapColor(MapColor.COLOR_GREEN))
             .properties(p -> p.sound(SoundType.NETHERITE_BLOCK)
                     .explosionResistance(1200))
             .transform(pickaxeOnly())
@@ -962,8 +963,9 @@ public static final BlockEntry<ScrewBlock> ZINC_SCREW = REGISTRATE.block("zinc_s
     //CRUSHING WHEELS
     public static final BlockEntry<MmbCrushingWheelControllerBlock> MMB_CRUSHING_WHEEL_CONTROLLER =
             REGISTRATE.block("crushing_wheel_controller", MmbCrushingWheelControllerBlock::new)
-                    .initialProperties(SharedProperties.CRUSHING_WHEEL_CONTROLLER_MATERIAL)
-                    .properties(p -> p.color(MaterialColor.STONE))
+//                    .initialProperties(new CrushingWheelBlock(BlockBehaviour.Properties.of()))
+//                   TODO .initialProperties(SharedProperties.CRUSHING_WHEEL_CONTROLLER_MATERIAL)
+                    .properties(p -> p.mapColor(MapColor.STONE))
                     .properties(p -> p.noOcclusion()
                             .noLootTable()
                             .air())
@@ -1001,7 +1003,7 @@ public static final BlockEntry<ScrewBlock> ZINC_SCREW = REGISTRATE.block("zinc_s
     public static final BlockEntry<MmbCrushingWheelBlock> LIMESTONE_CRUSHING_WHEEL =
             REGISTRATE.block("limestone_crushing_wheel", MmbCrushingWheelBlock::new)
                     .initialProperties(() -> Blocks.SANDSTONE)
-                    .properties(p -> p.color(MaterialColor.SAND))
+                    .properties(p -> p.mapColor(MapColor.SAND))
                     .properties(p -> p.destroyTime(1.25f))
                     .properties(BlockBehaviour.Properties::noOcclusion)
                     .transform(pickaxeOnly())
@@ -1015,7 +1017,7 @@ public static final BlockEntry<ScrewBlock> ZINC_SCREW = REGISTRATE.block("zinc_s
     public static final BlockEntry<MmbCrushingWheelBlock> OCHRUM_CRUSHING_WHEEL =
             REGISTRATE.block("ochrum_crushing_wheel", MmbCrushingWheelBlock::new)
                     .initialProperties(() -> Blocks.CALCITE)
-                    .properties(p -> p.color(MaterialColor.COLOR_YELLOW))
+                    .properties(p -> p.mapColor(MapColor.COLOR_YELLOW))
                     .properties(p -> p.destroyTime(1.25f))
                     .properties(BlockBehaviour.Properties::noOcclusion)
                     .transform(pickaxeOnly())
@@ -1029,7 +1031,7 @@ public static final BlockEntry<ScrewBlock> ZINC_SCREW = REGISTRATE.block("zinc_s
     public static final BlockEntry<MmbCrushingWheelBlock> SCORCHIA_CRUSHING_WHEEL =
             REGISTRATE.block("scorchia_crushing_wheel", MmbCrushingWheelBlock::new)
                     .initialProperties(() -> Blocks.BLACKSTONE)
-                    .properties(p -> p.color(MaterialColor.TERRACOTTA_GRAY))
+                    .properties(p -> p.mapColor(MapColor.TERRACOTTA_GRAY))
                     .properties(p -> p.destroyTime(1.25f))
                     .properties(BlockBehaviour.Properties::noOcclusion)
                     .transform(pickaxeOnly())
@@ -1043,7 +1045,7 @@ public static final BlockEntry<ScrewBlock> ZINC_SCREW = REGISTRATE.block("zinc_s
     public static final BlockEntry<MmbCrushingWheelBlock> SCORIA_CRUSHING_WHEEL =
             REGISTRATE.block("scoria_crushing_wheel", MmbCrushingWheelBlock::new)
                     .initialProperties(() -> Blocks.BLACKSTONE)
-                    .properties(p -> p.color(MaterialColor.COLOR_BROWN))
+                    .properties(p -> p.mapColor(MapColor.COLOR_BROWN))
                     .properties(p -> p.destroyTime(1.25f))
                     .properties(BlockBehaviour.Properties::noOcclusion)
                     .transform(pickaxeOnly())
@@ -1070,7 +1072,7 @@ public static final BlockEntry<ScrewBlock> ZINC_SCREW = REGISTRATE.block("zinc_s
     public static final BlockEntry<MmbCrushingWheelBlock> VERIDIUM_CRUSHING_WHEEL =
             REGISTRATE.block("veridium_crushing_wheel", MmbCrushingWheelBlock::new)
                     .initialProperties(() -> Blocks.TUFF)
-                    .properties(p -> p.color(MaterialColor.WARPED_NYLIUM))
+                    .properties(p -> p.mapColor(MapColor.WARPED_NYLIUM))
                     .properties(p -> p.destroyTime(1.25f))
                     .properties(BlockBehaviour.Properties::noOcclusion)
                     .transform(pickaxeOnly())
@@ -1109,7 +1111,7 @@ public static final BlockEntry<ScrewBlock> ZINC_SCREW = REGISTRATE.block("zinc_s
                     .register();
     public static final BlockEntry<MmbCrushingWheelBlock> CRIMSITE_CRUSHING_WHEEL =
             REGISTRATE.block("crimsite_crushing_wheel", MmbCrushingWheelBlock::new)
-                    .properties(p -> p.color(MaterialColor.COLOR_RED))
+                    .properties(p -> p.mapColor(MapColor.COLOR_RED))
                     .initialProperties(() -> Blocks.DEEPSLATE)
                     .properties(p -> p.destroyTime(1.25f))
                     .properties(BlockBehaviour.Properties::noOcclusion)
@@ -1137,7 +1139,7 @@ public static final BlockEntry<ScrewBlock> ZINC_SCREW = REGISTRATE.block("zinc_s
     public static final BlockEntry<MmbCrushingWheelBlock> ASURINE_CRUSHING_WHEEL =
             REGISTRATE.block("asurine_crushing_wheel", MmbCrushingWheelBlock::new)
                     .initialProperties(() -> Blocks.DEEPSLATE)
-                    .properties(p -> p.color(MaterialColor.COLOR_BLUE))
+                    .properties(p -> p.mapColor(MapColor.COLOR_BLUE))
                     .properties(p -> p.destroyTime(1.25f))
                     .properties(BlockBehaviour.Properties::noOcclusion)
                     .transform(pickaxeOnly())
@@ -1175,7 +1177,7 @@ public static final BlockEntry<ScrewBlock> ZINC_SCREW = REGISTRATE.block("zinc_s
             REGISTRATE.block("limestone_millstone", LimestoneDecoMillStoneBlock::new)
                     .initialProperties(() -> Blocks.SANDSTONE)
                     .properties(p -> p.destroyTime(1.25f))
-                    .properties(p -> p.color(MaterialColor.SAND))
+                    .properties(p -> p.mapColor(MapColor.SAND))
                     .transform(pickaxeOnly())
                     .blockstate((c, p) -> p.simpleBlock(c.getEntry(), AssetLookup.partialBaseModel(c, p)))
                     .transform(BlockStressDefaults.setImpact(4.0))
@@ -1187,7 +1189,7 @@ public static final BlockEntry<ScrewBlock> ZINC_SCREW = REGISTRATE.block("zinc_s
             REGISTRATE.block("ochrum_millstone", OchrumDecoMillStoneBlock::new)
                     .initialProperties(() -> Blocks.CALCITE)
                     .properties(p -> p.destroyTime(1.25f))
-                    .properties(p -> p.color(MaterialColor.TERRACOTTA_YELLOW))
+                    .properties(p -> p.mapColor(MapColor.TERRACOTTA_YELLOW))
                     .transform(pickaxeOnly())
                     .blockstate((c, p) -> p.simpleBlock(c.getEntry(), AssetLookup.partialBaseModel(c, p)))
                     .transform(BlockStressDefaults.setImpact(4.0))
@@ -1199,7 +1201,7 @@ public static final BlockEntry<ScrewBlock> ZINC_SCREW = REGISTRATE.block("zinc_s
             REGISTRATE.block("scorchia_millstone", ScorchiaDecoMillStoneBlock::new)
                     .initialProperties(() -> Blocks.BLACKSTONE)
                     .properties(p -> p.destroyTime(1.25f))
-                    .properties(p -> p.color(MaterialColor.TERRACOTTA_GRAY))
+                    .properties(p -> p.mapColor(MapColor.TERRACOTTA_GRAY))
                     .transform(pickaxeOnly())
                     .blockstate((c, p) -> p.simpleBlock(c.getEntry(), AssetLookup.partialBaseModel(c, p)))
                     .transform(BlockStressDefaults.setImpact(4.0))
@@ -1211,7 +1213,7 @@ public static final BlockEntry<ScrewBlock> ZINC_SCREW = REGISTRATE.block("zinc_s
             REGISTRATE.block("scoria_millstone", ScoriaDecoMillStoneBlock::new)
                     .initialProperties(() -> Blocks.BLACKSTONE)
                     .properties(p -> p.destroyTime(1.25f))
-                    .properties(p -> p.color(MaterialColor.COLOR_BROWN))
+                    .properties(p -> p.mapColor(MapColor.COLOR_BROWN))
                     .transform(pickaxeOnly())
                     .blockstate((c, p) -> p.simpleBlock(c.getEntry(), AssetLookup.partialBaseModel(c, p)))
                     .transform(BlockStressDefaults.setImpact(4.0))
@@ -1234,7 +1236,7 @@ public static final BlockEntry<ScrewBlock> ZINC_SCREW = REGISTRATE.block("zinc_s
             REGISTRATE.block("veridium_millstone", VeridiumDecoMillStoneBlock::new)
                     .initialProperties(() -> Blocks.TUFF)
                     .properties(p -> p.destroyTime(1.25f))
-                    .properties(p -> p.color(MaterialColor.WARPED_NYLIUM))
+                    .properties(p -> p.mapColor(MapColor.WARPED_NYLIUM))
                     .transform(pickaxeOnly())
                     .blockstate((c, p) -> p.simpleBlock(c.getEntry(), AssetLookup.partialBaseModel(c, p)))
                     .transform(BlockStressDefaults.setImpact(4.0))
@@ -1268,7 +1270,7 @@ public static final BlockEntry<ScrewBlock> ZINC_SCREW = REGISTRATE.block("zinc_s
             REGISTRATE.block("crimsite_millstone", CrimsiteDecoMillStoneBlock::new)
                     .initialProperties(() -> Blocks.DEEPSLATE)
                     .properties(p -> p.destroyTime(1.25f))
-                    .properties(p -> p.color(MaterialColor.COLOR_RED))
+                    .properties(p -> p.mapColor(MapColor.COLOR_RED))
                     .transform(pickaxeOnly())
                     .blockstate((c, p) -> p.simpleBlock(c.getEntry(), AssetLookup.partialBaseModel(c, p)))
                     .transform(BlockStressDefaults.setImpact(4.0))
@@ -1291,7 +1293,7 @@ public static final BlockEntry<ScrewBlock> ZINC_SCREW = REGISTRATE.block("zinc_s
             REGISTRATE.block("asurine_millstone", AsurineDecoMillStoneBlock::new)
                     .initialProperties(() -> Blocks.DEEPSLATE)
                     .properties(p -> p.destroyTime(1.25f))
-                    .properties(p -> p.color(MaterialColor.COLOR_BLUE))
+                    .properties(p -> p.mapColor(MapColor.COLOR_BLUE))
                     .transform(pickaxeOnly())
                     .blockstate((c, p) -> p.simpleBlock(c.getEntry(), AssetLookup.partialBaseModel(c, p)))
                     .transform(BlockStressDefaults.setImpact(4.0))
@@ -1305,7 +1307,7 @@ public static final BlockEntry<ScrewBlock> ZINC_SCREW = REGISTRATE.block("zinc_s
     //MISC
     public static final BlockEntry<Block> CAPITALISM_BLOCK =
             REGISTRATE.block("capitalism_block", Block::new)
-                    .properties(p -> p.color(MaterialColor.GOLD))
+                    .properties(p -> p.mapColor(MapColor.GOLD))
                     .initialProperties(SharedProperties::copperMetal)
                     .transform(pickaxeOnly())
                     .tag(BlockTags.BEACON_BASE_BLOCKS)
@@ -1315,7 +1317,7 @@ public static final BlockEntry<ScrewBlock> ZINC_SCREW = REGISTRATE.block("zinc_s
                     .register();
     public static final BlockEntry<Block> INDUSTRIAL_GOLD_BLOCK =
             REGISTRATE.block("industrial_gold_block", Block::new)
-                    .properties(p -> p.color(MaterialColor.GOLD))
+                    .properties(p -> p.mapColor(MapColor.GOLD))
                     .initialProperties(SharedProperties::copperMetal)
                     .transform(pickaxeOnly())
                     .item()
@@ -1335,7 +1337,7 @@ public static final BlockEntry<ScrewBlock> ZINC_SCREW = REGISTRATE.block("zinc_s
                     .register();
     public static final BlockEntry<Block> ZINC_FLOOR =
             REGISTRATE.block("zinc_floor", Block::new)
-                    .properties(p -> p.color(MaterialColor.GOLD))
+                    .properties(p -> p.mapColor(MapColor.GOLD))
                     .initialProperties(SharedProperties::copperMetal)
                     .transform(pickaxeOnly())
                     .item()
@@ -1344,7 +1346,7 @@ public static final BlockEntry<ScrewBlock> ZINC_SCREW = REGISTRATE.block("zinc_s
                     .register();
     public static final BlockEntry<Block> BRASS_FLOOR =
             REGISTRATE.block("brass_floor", Block::new)
-                    .properties(p -> p.color(MaterialColor.GOLD))
+                    .properties(p -> p.mapColor(MapColor.GOLD))
                     .initialProperties(SharedProperties::copperMetal)
                     .transform(pickaxeOnly())
                     .item()
@@ -1353,7 +1355,7 @@ public static final BlockEntry<ScrewBlock> ZINC_SCREW = REGISTRATE.block("zinc_s
                     .register();
     public static final BlockEntry<Block> COPPER_FLOOR =
             REGISTRATE.block("copper_floor", Block::new)
-                    .properties(p -> p.color(MaterialColor.GOLD))
+                    .properties(p -> p.mapColor(MapColor.GOLD))
                     .initialProperties(SharedProperties::copperMetal)
                     .transform(pickaxeOnly())
                     .item()
@@ -1362,7 +1364,7 @@ public static final BlockEntry<ScrewBlock> ZINC_SCREW = REGISTRATE.block("zinc_s
                     .register();
     public static final BlockEntry<Block> INDUSTRIAL_IRON_FLOOR =
             REGISTRATE.block("industrial_iron_floor", Block::new)
-                    .properties(p -> p.color(MaterialColor.GOLD))
+                    .properties(p -> p.mapColor(MapColor.GOLD))
                     .initialProperties(SharedProperties::copperMetal)
                     .transform(pickaxeOnly())
                     .item()
@@ -1371,7 +1373,7 @@ public static final BlockEntry<ScrewBlock> ZINC_SCREW = REGISTRATE.block("zinc_s
                     .register();
     public static final BlockEntry<Block> INDUSTRIAL_GOLD_FLOOR =
             REGISTRATE.block("industrial_gold_floor", Block::new)
-                    .properties(p -> p.color(MaterialColor.GOLD))
+                    .properties(p -> p.mapColor(MapColor.GOLD))
                     .initialProperties(SharedProperties::copperMetal)
                     .transform(pickaxeOnly())
                     .item()
@@ -1383,7 +1385,7 @@ public static final BlockEntry<ScrewBlock> ZINC_SCREW = REGISTRATE.block("zinc_s
             REGISTRATE.block("industrial_plating_block", Block::new)
                     .transform(CDDBuilderTransformer.layeredConnected(() -> CDDSpriteShifts.INDUSTRIAL_PLATING_BLOCK_SIDE, () -> CDDSpriteShifts.INDUSTRIAL_PLATING_BLOCK))
                     .initialProperties(SharedProperties::softMetal)
-                    .properties(p -> p.color(MaterialColor.COLOR_GRAY))
+                    .properties(p -> p.mapColor(MapColor.COLOR_GRAY))
                     .properties(p -> p.sound(SoundType.NETHERITE_BLOCK))
                     .properties(BlockBehaviour.Properties::requiresCorrectToolForDrops)
                     .transform(pickaxeOnly())
@@ -1397,7 +1399,7 @@ public static final BlockEntry<ScrewBlock> ZINC_SCREW = REGISTRATE.block("zinc_s
                     .initialProperties(SharedProperties::stone)
                     .onRegister(connectedTextures(() -> new EncasedCTBehaviour(CDDSpriteShifts.STONE_TILES)))
                     .onRegister(casingConnectivity((block, cc) -> cc.makeCasing(block, CDDSpriteShifts.STONE_TILES)))
-                    .properties(p -> p.color(MaterialColor.COLOR_GRAY))
+                    .properties(p -> p.mapColor(MapColor.COLOR_GRAY))
                     .properties(p -> p.sound(SoundType.DEEPSLATE_TILES))
                     .properties(BlockBehaviour.Properties::requiresCorrectToolForDrops)
                     .transform(pickaxeOnly())
@@ -1410,7 +1412,7 @@ public static final BlockEntry<ScrewBlock> ZINC_SCREW = REGISTRATE.block("zinc_s
                     .initialProperties(SharedProperties::stone)
                     .onRegister(connectedTextures(() -> new EncasedCTBehaviour(CDDSpriteShifts.RED_STONE_TILES)))
                     .onRegister(casingConnectivity((block, cc) -> cc.makeCasing(block, CDDSpriteShifts.RED_STONE_TILES)))
-                    .properties(p -> p.color(MaterialColor.COLOR_GRAY))
+                    .properties(p -> p.mapColor(MapColor.COLOR_GRAY))
                     .properties(p -> p.sound(SoundType.DEEPSLATE_TILES))
                     .properties(BlockBehaviour.Properties::requiresCorrectToolForDrops)
                     .transform(pickaxeOnly())
@@ -1424,7 +1426,7 @@ public static final BlockEntry<ScrewBlock> ZINC_SCREW = REGISTRATE.block("zinc_s
                     .initialProperties(SharedProperties::softMetal)
                     .onRegister(connectedTextures(() -> new EncasedCTBehaviour(CDDSpriteShifts.ZINC_CHECKER_TILES)))
                     .onRegister(casingConnectivity((block, cc) -> cc.makeCasing(block, CDDSpriteShifts.ZINC_CHECKER_TILES)))
-                    .properties(p -> p.color(MaterialColor.COLOR_GRAY))
+                    .properties(p -> p.mapColor(MapColor.COLOR_GRAY))
                     .properties(p -> p.sound(SoundType.COPPER))
                     .recipe((c, p) -> p.stonecutting(DataIngredient.tag(AllTags.forgeItemTag("ingots/zinc")), c::get, 4))
                     .properties(BlockBehaviour.Properties::requiresCorrectToolForDrops)
@@ -1621,7 +1623,7 @@ public static final BlockEntry<ScrewBlock> ZINC_SCREW = REGISTRATE.block("zinc_s
             REGISTRATE.block("ornate_grate", OrnateGrateBlock::new)
                     .transform(CDDBuilderTransformer.ornateconnected(() -> CDDSpriteShifts.ORNATE_GRATE))
                     .initialProperties(SharedProperties::wooden)
-                    .properties(p -> p.color(MaterialColor.TERRACOTTA_GRAY))
+                    .properties(p -> p.mapColor(MapColor.TERRACOTTA_GRAY))
                     .properties(p -> p.sound(SoundType.WOOD))
                     .transform(axeOrPickaxe())
                     .properties(BlockBehaviour.Properties::noOcclusion)
@@ -1655,7 +1657,7 @@ public static final BlockEntry<ScrewBlock> ZINC_SCREW = REGISTRATE.block("zinc_s
     public static final BlockEntry<DiagonalGirderBlock> DIAGONAL_GIRDER =
             REGISTRATE.block("diagonal_girder", DiagonalGirderBlock::new)
                     .initialProperties(SharedProperties::softMetal)
-                    .properties(p -> p.color(MaterialColor.COLOR_GRAY))
+                    .properties(p -> p.mapColor(MapColor.COLOR_GRAY))
                     .properties(p -> p.sound(SoundType.NETHERITE_BLOCK))
                     .properties(BlockBehaviour.Properties::noOcclusion)
                     .addLayer(() -> RenderType::cutout)
@@ -1671,7 +1673,7 @@ public static final BlockEntry<ScrewBlock> ZINC_SCREW = REGISTRATE.block("zinc_s
 
     public static final BlockEntry<TagDependentLargeChain> LARGE_ALUMINIUM_CHAIN =
             REGISTRATE.block("aluminium_large_chain", p -> new TagDependentLargeChain(p, AllTags.forgeItemTag("ingots/aluminium")))
-                    .properties(p -> p.color(MaterialColor.METAL))
+                    .properties(p -> p.mapColor(MapColor.METAL))
                     .addLayer(() -> RenderType::cutout)
                     .transform(axeOrPickaxe())
                     .blockstate(BlockStateGen.axisBlockProvider(true))
@@ -1683,7 +1685,7 @@ public static final BlockEntry<ScrewBlock> ZINC_SCREW = REGISTRATE.block("zinc_s
                     .register();
     public static final BlockEntry<LargeChain> LARGE_ANDESITE_CHAIN =
             REGISTRATE.block("andesite_large_chain", LargeChain::new)
-                    .properties(p -> p.color(MaterialColor.METAL))
+                    .properties(p -> p.mapColor(MapColor.METAL))
                     .addLayer(() -> RenderType::cutout)
                     .transform(axeOrPickaxe())
                     .blockstate(BlockStateGen.axisBlockProvider(true))
@@ -1695,7 +1697,7 @@ public static final BlockEntry<ScrewBlock> ZINC_SCREW = REGISTRATE.block("zinc_s
                     .register();
     public static final BlockEntry<LargeChain> LARGE_BRASS_CHAIN =
             REGISTRATE.block("brass_large_chain", LargeChain::new)
-                    .properties(p -> p.color(MaterialColor.METAL))
+                    .properties(p -> p.mapColor(MapColor.METAL))
                     .addLayer(() -> RenderType::cutout)
                     .transform(axeOrPickaxe())
                     .blockstate(BlockStateGen.axisBlockProvider(true))
@@ -1707,7 +1709,7 @@ public static final BlockEntry<ScrewBlock> ZINC_SCREW = REGISTRATE.block("zinc_s
                     .register();
     public static final BlockEntry<TagDependentLargeChain> LARGE_STRONG_BRONZE_CHAIN =
             REGISTRATE.block("strong_bronze_large_chain", p -> new TagDependentLargeChain(p, AllTags.forgeItemTag("ingots/strong_bronze")))
-                    .properties(p -> p.color(MaterialColor.METAL))
+                    .properties(p -> p.mapColor(MapColor.METAL))
                     .addLayer(() -> RenderType::cutout)
                     .transform(axeOrPickaxe())
                     .blockstate(BlockStateGen.axisBlockProvider(true))
@@ -1719,7 +1721,7 @@ public static final BlockEntry<ScrewBlock> ZINC_SCREW = REGISTRATE.block("zinc_s
                     .register();
     public static final BlockEntry<TagDependentLargeChain> LARGE_BRONZE_CHAIN =
             REGISTRATE.block("bronze_large_chain", p -> new TagDependentLargeChain(p, AllTags.forgeItemTag("ingots/bronze")))
-                    .properties(p -> p.color(MaterialColor.METAL))
+                    .properties(p -> p.mapColor(MapColor.METAL))
                     .addLayer(() -> RenderType::cutout)
                     .transform(axeOrPickaxe())
                     .blockstate(BlockStateGen.axisBlockProvider(true))
@@ -1731,7 +1733,7 @@ public static final BlockEntry<ScrewBlock> ZINC_SCREW = REGISTRATE.block("zinc_s
                     .register();
     public static final BlockEntry<TagDependentLargeChain> LARGE_CAST_IRON_CHAIN =
             REGISTRATE.block("cast_iron_large_chain", p -> new TagDependentLargeChain(p, AllTags.forgeItemTag("ingots/cast_iron")))
-                    .properties(p -> p.color(MaterialColor.METAL))
+                    .properties(p -> p.mapColor(MapColor.METAL))
                     .addLayer(() -> RenderType::cutout)
                     .transform(axeOrPickaxe())
                     .blockstate(BlockStateGen.axisBlockProvider(true))
@@ -1743,7 +1745,7 @@ public static final BlockEntry<ScrewBlock> ZINC_SCREW = REGISTRATE.block("zinc_s
                     .register();
     public static final BlockEntry<LargeChain> LARGE_COPPER_CHAIN =
             REGISTRATE.block("copper_large_chain", LargeChain::new)
-                    .properties(p -> p.color(MaterialColor.METAL))
+                    .properties(p -> p.mapColor(MapColor.METAL))
                     .addLayer(() -> RenderType::cutout)
                     .transform(axeOrPickaxe())
                     .blockstate(BlockStateGen.axisBlockProvider(true))
@@ -1755,7 +1757,7 @@ public static final BlockEntry<ScrewBlock> ZINC_SCREW = REGISTRATE.block("zinc_s
                     .register();
     public static final BlockEntry<TagDependentLargeChain> LARGE_ELECTRUM_CHAIN =
             REGISTRATE.block("electrum_large_chain", p -> new TagDependentLargeChain(p, AllTags.forgeItemTag("ingots/electrum")))
-                    .properties(p -> p.color(MaterialColor.METAL))
+                    .properties(p -> p.mapColor(MapColor.METAL))
                     .addLayer(() -> RenderType::cutout)
                     .transform(axeOrPickaxe())
                     .blockstate(BlockStateGen.axisBlockProvider(true))
@@ -1767,7 +1769,7 @@ public static final BlockEntry<ScrewBlock> ZINC_SCREW = REGISTRATE.block("zinc_s
                     .register();
     public static final BlockEntry<LargeChain> LARGE_GOLD_CHAIN =
             REGISTRATE.block("gold_large_chain", LargeChain::new)
-                    .properties(p -> p.color(MaterialColor.METAL))
+                    .properties(p -> p.mapColor(MapColor.METAL))
                     .addLayer(() -> RenderType::cutout)
                     .transform(axeOrPickaxe())
                     .blockstate(BlockStateGen.axisBlockProvider(true))
@@ -1779,7 +1781,7 @@ public static final BlockEntry<ScrewBlock> ZINC_SCREW = REGISTRATE.block("zinc_s
                     .register();
     public static final BlockEntry<LargeChain> LARGE_INDUSTRIAL_IRON_CHAIN =
             REGISTRATE.block("industrial_iron_large_chain", LargeChain::new)
-                    .properties(p -> p.color(MaterialColor.METAL))
+                    .properties(p -> p.mapColor(MapColor.METAL))
                     .addLayer(() -> RenderType::cutout)
                     .transform(axeOrPickaxe())
                     .blockstate(BlockStateGen.axisBlockProvider(true))
@@ -1791,7 +1793,7 @@ public static final BlockEntry<ScrewBlock> ZINC_SCREW = REGISTRATE.block("zinc_s
                     .register();
     public static final BlockEntry<LargeChain> LARGE_IRON_CHAIN =
             REGISTRATE.block("iron_large_chain", LargeChain::new)
-                    .properties(p -> p.color(MaterialColor.METAL))
+                    .properties(p -> p.mapColor(MapColor.METAL))
                     .addLayer(() -> RenderType::cutout)
                     .transform(axeOrPickaxe())
                     .blockstate(BlockStateGen.axisBlockProvider(true))
@@ -1803,7 +1805,7 @@ public static final BlockEntry<ScrewBlock> ZINC_SCREW = REGISTRATE.block("zinc_s
                     .register();
     public static final BlockEntry<TagDependentLargeChain> LARGE_LEAD_CHAIN =
             REGISTRATE.block("lead_large_chain", p -> new TagDependentLargeChain(p, AllTags.forgeItemTag("ingots/lead")))
-                    .properties(p -> p.color(MaterialColor.METAL))
+                    .properties(p -> p.mapColor(MapColor.METAL))
                     .addLayer(() -> RenderType::cutout)
                     .transform(axeOrPickaxe())
                     .blockstate(BlockStateGen.axisBlockProvider(true))
@@ -1815,7 +1817,7 @@ public static final BlockEntry<ScrewBlock> ZINC_SCREW = REGISTRATE.block("zinc_s
                     .register();
     public static final BlockEntry<TagDependentLargeChain> LARGE_MITHRIL_CHAIN =
             REGISTRATE.block("mithril_large_chain", p -> new TagDependentLargeChain(p, AllTags.forgeItemTag("ingots/mithril")))
-                    .properties(p -> p.color(MaterialColor.METAL))
+                    .properties(p -> p.mapColor(MapColor.METAL))
                     .addLayer(() -> RenderType::cutout)
                     .transform(axeOrPickaxe())
                     .blockstate(BlockStateGen.axisBlockProvider(true))
@@ -1827,7 +1829,7 @@ public static final BlockEntry<ScrewBlock> ZINC_SCREW = REGISTRATE.block("zinc_s
                     .register();
     public static final BlockEntry<LargeChain> LARGE_NETHERITE_CHAIN =
             REGISTRATE.block("netherite_large_chain", LargeChain::new)
-                    .properties(p -> p.color(MaterialColor.METAL))
+                    .properties(p -> p.mapColor(MapColor.METAL))
                     .addLayer(() -> RenderType::cutout)
                     .transform(axeOrPickaxe())
                     .blockstate(BlockStateGen.axisBlockProvider(true))
@@ -1839,7 +1841,7 @@ public static final BlockEntry<ScrewBlock> ZINC_SCREW = REGISTRATE.block("zinc_s
                     .register();
     public static final BlockEntry<TagDependentLargeChain> LARGE_NETHERSTEEL_CHAIN =
             REGISTRATE.block("nethersteel_large_chain", p -> new TagDependentLargeChain(p, AllTags.forgeItemTag("ingots/nethersteel")))
-                    .properties(p -> p.color(MaterialColor.METAL))
+                    .properties(p -> p.mapColor(MapColor.METAL))
                     .addLayer(() -> RenderType::cutout)
                     .transform(axeOrPickaxe())
                     .blockstate(BlockStateGen.axisBlockProvider(true))
@@ -1851,7 +1853,7 @@ public static final BlockEntry<ScrewBlock> ZINC_SCREW = REGISTRATE.block("zinc_s
                     .register();
     public static final BlockEntry<LargeChain> LARGE_ZINC_CHAIN =
             REGISTRATE.block("zinc_large_chain", LargeChain::new)
-                    .properties(p -> p.color(MaterialColor.METAL))
+                    .properties(p -> p.mapColor(MapColor.METAL))
                     .addLayer(() -> RenderType::cutout)
                     .transform(axeOrPickaxe())
                     .blockstate(BlockStateGen.axisBlockProvider(true))
@@ -1863,7 +1865,7 @@ public static final BlockEntry<ScrewBlock> ZINC_SCREW = REGISTRATE.block("zinc_s
                     .register();
     public static final BlockEntry<TagDependentLargeChain> LARGE_TIN_CHAIN =
             REGISTRATE.block("tin_large_chain", p -> new TagDependentLargeChain(p, AllTags.forgeItemTag("ingots/tin")))
-                    .properties(p -> p.color(MaterialColor.METAL))
+                    .properties(p -> p.mapColor(MapColor.METAL))
                     .addLayer(() -> RenderType::cutout)
                     .transform(axeOrPickaxe())
                     .blockstate(BlockStateGen.axisBlockProvider(true))
@@ -1875,7 +1877,7 @@ public static final BlockEntry<ScrewBlock> ZINC_SCREW = REGISTRATE.block("zinc_s
                     .register();
     public static final BlockEntry<TagDependentLargeChain> LARGE_STEEL_CHAIN =
             REGISTRATE.block("steel_large_chain", p -> new TagDependentLargeChain(p, AllTags.forgeItemTag("ingots/steel")))
-                    .properties(p -> p.color(MaterialColor.METAL))
+                    .properties(p -> p.mapColor(MapColor.METAL))
                     .addLayer(() -> RenderType::cutout)
                     .transform(axeOrPickaxe())
                     .blockstate(BlockStateGen.axisBlockProvider(true))
@@ -1887,7 +1889,7 @@ public static final BlockEntry<ScrewBlock> ZINC_SCREW = REGISTRATE.block("zinc_s
                     .register();
     public static final BlockEntry<TagDependentLargeChain> LARGE_SILVER_CHAIN =
             REGISTRATE.block("silver_large_chain", p -> new TagDependentLargeChain(p, AllTags.forgeItemTag("ingots/silver")))
-                    .properties(p -> p.color(MaterialColor.METAL))
+                    .properties(p -> p.mapColor(MapColor.METAL))
                     .addLayer(() -> RenderType::cutout)
                     .transform(axeOrPickaxe())
                     .blockstate(BlockStateGen.axisBlockProvider(true))
@@ -1899,7 +1901,7 @@ public static final BlockEntry<ScrewBlock> ZINC_SCREW = REGISTRATE.block("zinc_s
                     .register();
     public static final BlockEntry<TagDependentLargeChain> LARGE_INVAR_CHAIN =
             REGISTRATE.block("invar_large_chain", p -> new TagDependentLargeChain(p, AllTags.forgeItemTag("ingots/invar")))
-                    .properties(p -> p.color(MaterialColor.METAL))
+                    .properties(p -> p.mapColor(MapColor.METAL))
                     .addLayer(() -> RenderType::cutout)
                     .transform(axeOrPickaxe())
                     .blockstate(BlockStateGen.axisBlockProvider(true))
@@ -1911,7 +1913,7 @@ public static final BlockEntry<ScrewBlock> ZINC_SCREW = REGISTRATE.block("zinc_s
                     .register();
     public static final BlockEntry<TagDependentLargeChain> LARGE_NICKEL_CHAIN =
             REGISTRATE.block("nickel_large_chain", p -> new TagDependentLargeChain(p, AllTags.forgeItemTag("ingots/nickel")))
-                    .properties(p -> p.color(MaterialColor.METAL))
+                    .properties(p -> p.mapColor(MapColor.METAL))
                     .addLayer(() -> RenderType::cutout)
                     .transform(axeOrPickaxe())
                     .blockstate(BlockStateGen.axisBlockProvider(true))
@@ -1923,7 +1925,7 @@ public static final BlockEntry<ScrewBlock> ZINC_SCREW = REGISTRATE.block("zinc_s
                     .register();
     public static final BlockEntry<TagDependentLargeChain> LARGE_ROSE_GOLD_CHAIN =
             REGISTRATE.block("rose_gold_large_chain", p -> new TagDependentLargeChain(p, AllTags.forgeItemTag("ingots/rose_gold")))
-                    .properties(p -> p.color(MaterialColor.METAL))
+                    .properties(p -> p.mapColor(MapColor.METAL))
                     .addLayer(() -> RenderType::cutout)
                     .transform(axeOrPickaxe())
                     .blockstate(BlockStateGen.axisBlockProvider(true))
@@ -1935,7 +1937,7 @@ public static final BlockEntry<ScrewBlock> ZINC_SCREW = REGISTRATE.block("zinc_s
                     .register();
     public static final BlockEntry<TagDependentLargeChain> LARGE_COBALT_CHAIN =
             REGISTRATE.block("cobalt_large_chain", p -> new TagDependentLargeChain(p, AllTags.forgeItemTag("ingots/cobalt")))
-                    .properties(p -> p.color(MaterialColor.METAL))
+                    .properties(p -> p.mapColor(MapColor.METAL))
                     .addLayer(() -> RenderType::cutout)
                     .transform(axeOrPickaxe())
                     .blockstate(BlockStateGen.axisBlockProvider(true))
@@ -1947,7 +1949,7 @@ public static final BlockEntry<ScrewBlock> ZINC_SCREW = REGISTRATE.block("zinc_s
                     .register();
     public static final BlockEntry<TagDependentLargeChain> LARGE_MANYULLYN_CHAIN =
             REGISTRATE.block("manyullyn_large_chain", p -> new TagDependentLargeChain(p, AllTags.forgeItemTag("ingots/manyullyn")))
-                    .properties(p -> p.color(MaterialColor.METAL))
+                    .properties(p -> p.mapColor(MapColor.METAL))
                     .addLayer(() -> RenderType::cutout)
                     .transform(axeOrPickaxe())
                     .blockstate(BlockStateGen.axisBlockProvider(true))
@@ -1959,7 +1961,7 @@ public static final BlockEntry<ScrewBlock> ZINC_SCREW = REGISTRATE.block("zinc_s
                     .register();
     public static final BlockEntry<TagDependentLargeChain> LARGE_HEPATIZON_CHAIN =
             REGISTRATE.block("hepatizon_large_chain", p -> new TagDependentLargeChain(p, AllTags.forgeItemTag("ingots/hepatizon")))
-                    .properties(p -> p.color(MaterialColor.METAL))
+                    .properties(p -> p.mapColor(MapColor.METAL))
                     .addLayer(() -> RenderType::cutout)
                     .transform(axeOrPickaxe())
                     .blockstate(BlockStateGen.axisBlockProvider(true))
@@ -1971,7 +1973,7 @@ public static final BlockEntry<ScrewBlock> ZINC_SCREW = REGISTRATE.block("zinc_s
                     .register();
     public static final BlockEntry<TagDependentLargeChain> LARGE_PIG_IRON_CHAIN =
             REGISTRATE.block("pig_iron_large_chain", p -> new TagDependentLargeChain(p, AllTags.forgeItemTag("ingots/pig_iron")))
-                    .properties(p -> p.color(MaterialColor.METAL))
+                    .properties(p -> p.mapColor(MapColor.METAL))
                     .addLayer(() -> RenderType::cutout)
                     .transform(axeOrPickaxe())
                     .blockstate(BlockStateGen.axisBlockProvider(true))
@@ -1983,7 +1985,7 @@ public static final BlockEntry<ScrewBlock> ZINC_SCREW = REGISTRATE.block("zinc_s
                     .register();
     public static final BlockEntry<TagDependentLargeChain> LARGE_KNIGHTSLIME_CHAIN =
             REGISTRATE.block("knightslime_large_chain", p -> new TagDependentLargeChain(p, AllTags.forgeItemTag("ingots/knightslime")))
-                    .properties(p -> p.color(MaterialColor.METAL))
+                    .properties(p -> p.mapColor(MapColor.METAL))
                     .addLayer(() -> RenderType::cutout)
                     .transform(axeOrPickaxe())
                     .blockstate(BlockStateGen.axisBlockProvider(true))
@@ -1995,7 +1997,7 @@ public static final BlockEntry<ScrewBlock> ZINC_SCREW = REGISTRATE.block("zinc_s
                     .register();
     public static final BlockEntry<TagDependentLargeChain> LARGE_QUEEN_SLIME_CHAIN =
             REGISTRATE.block("queen_slime_large_chain", p -> new TagDependentLargeChain(p, AllTags.forgeItemTag("ingots/queen_slime")))
-                    .properties(p -> p.color(MaterialColor.METAL))
+                    .properties(p -> p.mapColor(MapColor.METAL))
                     .addLayer(() -> RenderType::cutout)
                     .transform(axeOrPickaxe())
                     .blockstate(BlockStateGen.axisBlockProvider(true))
@@ -2014,7 +2016,7 @@ public static final BlockEntry<ScrewBlock> ZINC_SCREW = REGISTRATE.block("zinc_s
 
    // public static final BlockEntry<HorizontalFluidTankBlock> HORIZONTAL_FLUID_TANK = REGISTRATE.block("horizontal_fluid_tank", HorizontalFluidTankBlock::new)
    //         .initialProperties(SharedProperties::softMetal)
-   //         .properties(p -> p.color(MaterialColor.TERRACOTTA_BLUE))
+   //         .properties(p -> p.mapColor(MapColor.TERRACOTTA_BLUE))
    //         .properties(p -> p.sound(SoundType.NETHERITE_BLOCK)
    //                 .explosionResistance(1200))
    //         .transform(pickaxeOnly())
@@ -2141,7 +2143,7 @@ public static final BlockEntry<ScrewBlock> ZINC_SCREW = REGISTRATE.block("zinc_s
     public static final BlockEntry<SlabBlock> METAL_PLATE_SLAB =
             REGISTRATE.block( "metal_plate_slab", SlabBlock::new)
             .initialProperties(() -> Blocks.STONE)
-            .properties(p -> p.color(MaterialColor.COLOR_LIGHT_GRAY))
+            .properties(p -> p.mapColor(MapColor.COLOR_LIGHT_GRAY))
             .properties(p -> p.sound(SoundType.NETHERITE_BLOCK))
             .properties(p -> p.requiresCorrectToolForDrops())
             .transform(pickaxeOnly())
@@ -2157,7 +2159,7 @@ public static final BlockEntry<ScrewBlock> ZINC_SCREW = REGISTRATE.block("zinc_s
     public static final BlockEntry<SlabBlock> METAL_SHEET_SLAB =
             REGISTRATE.block( "metal_sheet_slab", SlabBlock::new)
                     .initialProperties(() -> Blocks.STONE)
-                    .properties(p -> p.color(MaterialColor.COLOR_LIGHT_GRAY))
+                    .properties(p -> p.mapColor(MapColor.COLOR_LIGHT_GRAY))
                     .properties(p -> p.sound(SoundType.NETHERITE_BLOCK))
                     .properties(p -> p.requiresCorrectToolForDrops())
                     .transform(pickaxeOnly())
@@ -2183,7 +2185,7 @@ public static final BlockEntry<ScrewBlock> ZINC_SCREW = REGISTRATE.block("zinc_s
 
         REGISTRATE.block(name+"_wall", WallBlock::new)
                 .initialProperties(() -> Blocks.STONE)
-                .properties(p -> p.color(MaterialColor.COLOR_LIGHT_GRAY))
+                .properties(p -> p.mapColor(MapColor.COLOR_LIGHT_GRAY))
                 .properties(p -> p.sound(SoundType.NETHERITE_BLOCK))
                 .properties(p -> p.requiresCorrectToolForDrops())
                 .transform(pickaxeOnly())
@@ -2203,7 +2205,7 @@ public static final BlockEntry<ScrewBlock> ZINC_SCREW = REGISTRATE.block("zinc_s
         if(plates) {
             REGISTRATE.block(name + "_stairs", p -> new StairBlock(() -> CDDBlocks.METAL_PLATE.get().defaultBlockState(), p))
                     .initialProperties(() -> Blocks.STONE)
-                    .properties(p -> p.color(MaterialColor.COLOR_LIGHT_GRAY))
+                    .properties(p -> p.mapColor(MapColor.COLOR_LIGHT_GRAY))
                     .properties(p -> p.sound(SoundType.NETHERITE_BLOCK))
                     .properties(p -> p.requiresCorrectToolForDrops())
                     .transform(pickaxeOnly())
@@ -2220,7 +2222,7 @@ public static final BlockEntry<ScrewBlock> ZINC_SCREW = REGISTRATE.block("zinc_s
         }else
             REGISTRATE.block(name + "_stairs", p -> new StairBlock(() -> CDDBlocks.METAL_SHEET.get().defaultBlockState(), p))
                     .initialProperties(() -> Blocks.STONE)
-                    .properties(p -> p.color(MaterialColor.COLOR_LIGHT_GRAY))
+                    .properties(p -> p.mapColor(MapColor.COLOR_LIGHT_GRAY))
                     .properties(p -> p.sound(SoundType.NETHERITE_BLOCK))
                     .properties(p -> p.requiresCorrectToolForDrops())
                     .transform(pickaxeOnly())
@@ -2242,7 +2244,7 @@ public static final BlockEntry<ScrewBlock> ZINC_SCREW = REGISTRATE.block("zinc_s
 
         return REGISTRATE.block(name, Block::new)
                 .initialProperties(() -> Blocks.STONE)
-                .properties(p -> p.color(MaterialColor.COLOR_LIGHT_GRAY))
+                .properties(p -> p.mapColor(MapColor.COLOR_LIGHT_GRAY))
                 .properties(p -> p.sound(SoundType.NETHERITE_BLOCK))
                 .properties(p -> p.requiresCorrectToolForDrops())
                 .transform(pickaxeOnly())
@@ -2280,7 +2282,7 @@ public static final BlockEntry<ScrewBlock> ZINC_SCREW = REGISTRATE.block("zinc_s
             }
             REGISTRATE.block(color + "_"+name, Block::new)
                     .initialProperties(() -> Blocks.STONE)
-                    .properties(p -> p.color(MaterialColor.COLOR_LIGHT_GRAY))
+                    .properties(p -> p.mapColor(MapColor.COLOR_LIGHT_GRAY))
                     .properties(p -> p.sound(SoundType.NETHERITE_BLOCK))
                     .properties(p -> p.requiresCorrectToolForDrops())
                     .transform(pickaxeOnly())
@@ -2296,7 +2298,7 @@ public static final BlockEntry<ScrewBlock> ZINC_SCREW = REGISTRATE.block("zinc_s
 
             REGISTRATE.block(color + "_" +name + "_wall", WallBlock::new)
                     .initialProperties(() -> Blocks.STONE)
-                    .properties(p -> p.color(MaterialColor.COLOR_LIGHT_GRAY))
+                    .properties(p -> p.mapColor(MapColor.COLOR_LIGHT_GRAY))
                     .properties(p -> p.sound(SoundType.NETHERITE_BLOCK))
                     .properties(p -> p.requiresCorrectToolForDrops())
                     .transform(pickaxeOnly())
@@ -2313,7 +2315,7 @@ public static final BlockEntry<ScrewBlock> ZINC_SCREW = REGISTRATE.block("zinc_s
             if(plates) {
                 REGISTRATE.block(color + "_" + name + "_stairs", p -> new StairBlock(() -> CDDBlocks.METAL_PLATE.get().defaultBlockState(), p))
                         .initialProperties(() -> Blocks.STONE)
-                        .properties(p -> p.color(MaterialColor.COLOR_LIGHT_GRAY))
+                        .properties(p -> p.mapColor(MapColor.COLOR_LIGHT_GRAY))
                         .properties(p -> p.sound(SoundType.NETHERITE_BLOCK))
                         .properties(p -> p.requiresCorrectToolForDrops())
                         .transform(pickaxeOnly())
@@ -2330,7 +2332,7 @@ public static final BlockEntry<ScrewBlock> ZINC_SCREW = REGISTRATE.block("zinc_s
             }
             REGISTRATE.block(color + "_" +name +  "_stairs", p -> new StairBlock(()-> CDDBlocks.METAL_SHEET.get().defaultBlockState(), p))
                     .initialProperties(() -> Blocks.STONE)
-                    .properties(p -> p.color(MaterialColor.COLOR_LIGHT_GRAY))
+                    .properties(p -> p.mapColor(MapColor.COLOR_LIGHT_GRAY))
                     .properties(p -> p.sound(SoundType.NETHERITE_BLOCK))
                     .properties(p -> p.requiresCorrectToolForDrops())
                     .transform(pickaxeOnly())
@@ -2347,7 +2349,7 @@ public static final BlockEntry<ScrewBlock> ZINC_SCREW = REGISTRATE.block("zinc_s
 
             REGISTRATE.block(color + "_" +name + "_slab", SlabBlock::new)
                     .initialProperties(() -> Blocks.STONE)
-                    .properties(p -> p.color(MaterialColor.COLOR_LIGHT_GRAY))
+                    .properties(p -> p.mapColor(MapColor.COLOR_LIGHT_GRAY))
                     .properties(p -> p.sound(SoundType.NETHERITE_BLOCK))
                     .properties(p -> p.requiresCorrectToolForDrops())
                     .transform(pickaxeOnly())
@@ -2377,13 +2379,13 @@ public static final BlockEntry<ScrewBlock> ZINC_SCREW = REGISTRATE.block("zinc_s
             CASTEL_BRICKS_DRIPSTONE = CastelBricks("dripstone", "Dripstone", Blocks.DRIPSTONE_BLOCK),
             CASTEL_BRICKS_DEEPSLATE = CastelBricks("deepslate", "Deepslate", Blocks.DEEPSLATE),
             CASTEL_BRICKS_TUFF = CastelBricks("tuff", "Tuff", Blocks.TUFF),
-            CASTEL_BRICKS_ASURINE = CastelBricks("asurine", "Asurine", MaterialColor.COLOR_BLUE, Blocks.DEEPSLATE),
-            CASTEL_BRICKS_CRIMSITE = CastelBricks("crimsite", "Crimsite", MaterialColor.COLOR_RED, Blocks.DEEPSLATE),
-            CASTEL_BRICKS_LIMESTONE = CastelBricks("limestone", "Limestone", MaterialColor.SAND, Blocks.SANDSTONE),
-            CASTEL_BRICKS_OCHRUM = CastelBricks("ochrum", "Ochrum", MaterialColor.TERRACOTTA_YELLOW, Blocks.CALCITE),
-            CASTEL_BRICKS_SCORIA = CastelBricks("scoria", "Scoria", MaterialColor.COLOR_BROWN, Blocks.BLACKSTONE),
-            CASTEL_BRICKS_SCORCHIA = CastelBricks("scorchia", "Scorchia", MaterialColor.TERRACOTTA_GRAY, Blocks.BLACKSTONE),
-            CASTEL_BRICKS_VERIDIUM = CastelBricks("veridium", "Veridium", MaterialColor.WARPED_NYLIUM, Blocks.TUFF),
+            CASTEL_BRICKS_ASURINE = CastelBricks("asurine", "Asurine", MapColor.COLOR_BLUE, Blocks.DEEPSLATE),
+            CASTEL_BRICKS_CRIMSITE = CastelBricks("crimsite", "Crimsite", MapColor.COLOR_RED, Blocks.DEEPSLATE),
+            CASTEL_BRICKS_LIMESTONE = CastelBricks("limestone", "Limestone", MapColor.SAND, Blocks.SANDSTONE),
+            CASTEL_BRICKS_OCHRUM = CastelBricks("ochrum", "Ochrum", MapColor.TERRACOTTA_YELLOW, Blocks.CALCITE),
+            CASTEL_BRICKS_SCORIA = CastelBricks("scoria", "Scoria", MapColor.COLOR_BROWN, Blocks.BLACKSTONE),
+            CASTEL_BRICKS_SCORCHIA = CastelBricks("scorchia", "Scorchia", MapColor.TERRACOTTA_GRAY, Blocks.BLACKSTONE),
+            CASTEL_BRICKS_VERIDIUM = CastelBricks("veridium", "Veridium", MapColor.WARPED_NYLIUM, Blocks.TUFF),
 
             CASTEL_TILE_GRANITE = CastelTiles("granite", "Granite", Blocks.GRANITE),
             CASTEL_TILE_DIORITE = CastelTiles("diorite", "Diorite", Blocks.DIORITE),
@@ -2392,13 +2394,13 @@ public static final BlockEntry<ScrewBlock> ZINC_SCREW = REGISTRATE.block("zinc_s
             CASTEL_TILE_DRIPSTONE = CastelTiles("dripstone", "Dripstone", Blocks.DRIPSTONE_BLOCK),
             CASTEL_TILE_DEEPSLATE = CastelTiles("deepslate", "Deepslate", Blocks.DEEPSLATE),
             CASTEL_TILE_TUFF = CastelTiles("tuff", "Tuff", Blocks.TUFF),
-            CASTEL_TILE_ASURINE = CastelTiles("asurine", "Asurine", MaterialColor.COLOR_BLUE, Blocks.DEEPSLATE),
-            CASTEL_TILE_CRIMSITE = CastelTiles("crimsite", "Crimsite", MaterialColor.COLOR_RED, Blocks.DEEPSLATE),
-            CASTEL_TILE_LIMESTONE = CastelTiles("limestone", "Limestone", MaterialColor.SAND, Blocks.SANDSTONE),
-            CASTEL_TILE_OCHRUM = CastelTiles("ochrum", "Ochrum", MaterialColor.TERRACOTTA_YELLOW, Blocks.CALCITE),
-            CASTEL_TILE_SCORIA = CastelTiles("scoria", "Scoria", MaterialColor.COLOR_BROWN, Blocks.BLACKSTONE),
-            CASTEL_TILE_SCORCHIA = CastelTiles("scorchia", "Scorchia", MaterialColor.TERRACOTTA_GRAY, Blocks.BLACKSTONE),
-            CASTEL_TILE_VERIDIUM = CastelTiles("veridium", "Veridium", MaterialColor.WARPED_NYLIUM, Blocks.TUFF)
+            CASTEL_TILE_ASURINE = CastelTiles("asurine", "Asurine", MapColor.COLOR_BLUE, Blocks.DEEPSLATE),
+            CASTEL_TILE_CRIMSITE = CastelTiles("crimsite", "Crimsite", MapColor.COLOR_RED, Blocks.DEEPSLATE),
+            CASTEL_TILE_LIMESTONE = CastelTiles("limestone", "Limestone", MapColor.SAND, Blocks.SANDSTONE),
+            CASTEL_TILE_OCHRUM = CastelTiles("ochrum", "Ochrum", MapColor.TERRACOTTA_YELLOW, Blocks.CALCITE),
+            CASTEL_TILE_SCORIA = CastelTiles("scoria", "Scoria", MapColor.COLOR_BROWN, Blocks.BLACKSTONE),
+            CASTEL_TILE_SCORCHIA = CastelTiles("scorchia", "Scorchia", MapColor.TERRACOTTA_GRAY, Blocks.BLACKSTONE),
+            CASTEL_TILE_VERIDIUM = CastelTiles("veridium", "Veridium", MapColor.WARPED_NYLIUM, Blocks.TUFF)
             ;
 
     public static class DecoTags {
