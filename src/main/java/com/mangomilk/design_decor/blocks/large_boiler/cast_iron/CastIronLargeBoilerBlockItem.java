@@ -2,7 +2,7 @@ package com.mangomilk.design_decor.blocks.large_boiler.cast_iron;
 
 import com.simibubi.create.CreateClient;
 import net.createmod.catnip.lang.Lang;
-import com.simibubi.create.foundation.utility.Pair;
+import net.createmod.catnip.data.Pair;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.core.BlockPos;
@@ -50,7 +50,7 @@ public class CastIronLargeBoilerBlockItem extends BlockItem {
                 .getNormal());
         if (!(context.getPlayer()instanceof LocalPlayer localPlayer))
             return;
-        CreateClient.OUTLINER.showAABB(Pair.of("waterwheel", pos), new AABB(pos).inflate(1)
+        Outliner.getInstance().showAABB(Pair.of("waterwheel", pos), new AABB(pos).inflate(1)
                         .deflate(contract.x, contract.y, contract.z))
                 .colored(0xFF_ff5d6c);
         Lang.translate("large_water_wheel.not_enough_space")
