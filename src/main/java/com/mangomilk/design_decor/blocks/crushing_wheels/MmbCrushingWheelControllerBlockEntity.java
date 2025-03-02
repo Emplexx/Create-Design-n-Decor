@@ -37,13 +37,14 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.fml.DistExecutor;
-import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.wrapper.RecipeWrapper;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
+
+import static net.minecraftforge.common.capabilities.ForgeCapabilities.ITEM_HANDLER;
 
 public class MmbCrushingWheelControllerBlockEntity extends CrushingWheelControllerBlockEntity {
 	private UUID entityUUID;
@@ -322,7 +323,7 @@ public class MmbCrushingWheelControllerBlockEntity extends CrushingWheelControll
 
 	@Override
 	public <T> LazyOptional<T> getCapability(Capability<T> cap, Direction side) {
-		if (cap == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY)
+		if (cap == ITEM_HANDLER)
 			return handler.cast();
 		return super.getCapability(cap, side);
 	}

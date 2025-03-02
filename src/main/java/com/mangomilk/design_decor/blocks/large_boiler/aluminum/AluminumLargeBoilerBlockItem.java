@@ -1,7 +1,7 @@
 package com.mangomilk.design_decor.blocks.large_boiler.aluminum;
 
 import com.simibubi.create.CreateClient;
-import com.simibubi.create.foundation.utility.Lang;
+import net.createmod.catnip.lang.Lang;
 import com.simibubi.create.foundation.utility.Pair;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.core.BlockPos;

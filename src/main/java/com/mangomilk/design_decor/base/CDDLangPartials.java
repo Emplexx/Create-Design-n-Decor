@@ -5,7 +5,7 @@ import com.google.gson.JsonElement;
 import com.mangomilk.design_decor.DesignDecor;
 import com.simibubi.create.foundation.data.LangPartial;
 import com.simibubi.create.foundation.utility.FilesHelper;
-import com.simibubi.create.foundation.utility.Lang;
+import net.createmod.catnip.lang.Lang;
 
 public enum CDDLangPartials implements LangPartial {
     INTERFACE("UI & Messages");

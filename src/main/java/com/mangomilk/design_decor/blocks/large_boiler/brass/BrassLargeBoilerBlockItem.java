@@ -2,7 +2,7 @@ package com.mangomilk.design_decor.blocks.large_boiler.brass;
 
 import com.mangomilk.design_decor.blocks.large_boiler.aluminum.AluminumLargeBoilerBlock;
 import com.simibubi.create.CreateClient;
-import com.simibubi.create.foundation.utility.Lang;
+import net.createmod.catnip.lang.Lang;
 import com.simibubi.create.foundation.utility.Pair;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.client.player.LocalPlayer;

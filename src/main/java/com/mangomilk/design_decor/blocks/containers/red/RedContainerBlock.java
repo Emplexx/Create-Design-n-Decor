@@ -30,9 +30,10 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.Property;
 import net.minecraftforge.common.util.ForgeSoundType;
-import net.minecraftforge.items.CapabilityItemHandler;
 
 import javax.annotation.Nullable;
+
+import static net.minecraftforge.common.capabilities.ForgeCapabilities.ITEM_HANDLER;
 
 public class RedContainerBlock extends Block implements IWrenchable, IBE<RedContainerBlockEntity> {
 
@@ -164,7 +165,7 @@ public class RedContainerBlock extends Block implements IWrenchable, IBE<RedCont
 	@SuppressWarnings("removal")
 	public int getAnalogOutputSignal(BlockState pState, Level pLevel, BlockPos pPos) {
 		return getBlockEntityOptional(pLevel, pPos)
-			.map(vte -> vte.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY))
+			.map(vte -> vte.getCapability(ITEM_HANDLER))
 			.map(lo -> lo.map(ItemHelper::calcRedstoneFromInventory)
 				.orElse(0))
 			.orElse(0);
