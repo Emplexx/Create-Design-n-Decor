@@ -17,6 +17,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.registries.RegistryObject;
 import org.slf4j.Logger;
 
 
@@ -26,7 +27,11 @@ public class DesignDecor
 
     public static final String MOD_ID = "design_decor";
     public static final String NAME = "Create: Design n' Decor";
-    public static final CreateRegistrate REGISTRATE = CreateRegistrate.create(DesignDecor.MOD_ID).creativeModeTab(()-> CDDCreativeModeTab.BUILDING);
+    public static final CreateRegistrate REGISTRATE = CreateRegistrate.create(DesignDecor.MOD_ID)
+
+//            .setCreativeTab()
+
+            .creativeModeTab(()-> CDDCreativeModeTab.BUILDING);
     public static final Logger LOGGER = LogUtils.getLogger();
 
     public DesignDecor()

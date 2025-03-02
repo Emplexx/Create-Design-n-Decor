@@ -104,7 +104,7 @@ public class ScrewBlock extends DirectionalBlock implements IWrenchable {
 
         context.getLevel().setBlock(context.getClickedPos(),state.setValue(ROTATED,!state.getValue(ROTATED)),2);
 
-        playRotateSound(context.getLevel(), context.getClickedPos());
+        IWrenchable.playRotateSound(context.getLevel(), context.getClickedPos());
 
 
         return onWrenched;

@@ -152,7 +152,7 @@ dependencies {
 //    runtimeOnly fg.deobf("mezz.jei:jei-${jei_minecraft_version}-forge:${jei_version}")
 
 
-    minecraft 'net.minecraftforge:forge:1.20.1-47.1.43'
+    minecraft 'net.minecraftforge:forge:1.20.1-47.3.0'
 //    minecraft 'net.minecraftforge:forge:1.20.1-47.0.43'
 
     implementation(fg.deobf("com.simibubi.create:create-${create_minecraft_version}:${create_version}-${create_version_number}") { transitive = false })

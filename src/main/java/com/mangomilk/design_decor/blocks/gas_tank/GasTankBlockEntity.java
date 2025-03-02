@@ -4,6 +4,7 @@ import com.simibubi.create.api.equipment.goggles.IHaveGoggleInformation;
 import com.simibubi.create.foundation.blockEntity.SmartBlockEntity;
 import com.simibubi.create.foundation.blockEntity.behaviour.BlockEntityBehaviour;
 import com.simibubi.create.foundation.fluid.SmartFluidTank;
+import com.simibubi.create.foundation.utility.CreateLang;
 import net.createmod.catnip.lang.Lang;
 import net.createmod.catnip.lang.LangBuilder;
 
@@ -106,7 +107,7 @@ public class GasTankBlockEntity extends SmartBlockEntity implements IHaveGoggleI
         if (tank.getTanks() == 0)
             return false;
 
-        LangBuilder mb = Lang.translate("generic.unit.millibuckets");
+        LangBuilder mb = CreateLang.translate("generic.unit.millibuckets");
 
 
         boolean isEmpty = true;
@@ -115,16 +116,16 @@ public class GasTankBlockEntity extends SmartBlockEntity implements IHaveGoggleI
             if (fluidStack.isEmpty())
                 continue;
 
-            Lang.fluidName(fluidStack)
+            CreateLang.fluidName(fluidStack)
                     .style(ChatFormatting.GRAY)
                     .forGoggles(tooltip, 1);
 
-            Lang.builder()
-                    .add(Lang.number(fluidStack.getAmount())
+            CreateLang.builder()
+                    .add(CreateLang.number(fluidStack.getAmount())
                             .add(mb)
                             .style(ChatFormatting.DARK_PURPLE))
                     .text(ChatFormatting.GRAY, " / ")
-                    .add(Lang.number(tank.getTankCapacity(i))
+                    .add(CreateLang.number(tank.getTankCapacity(i))
                             .add(mb)
                             .style(ChatFormatting.DARK_GRAY))
                     .forGoggles(tooltip, 1);
@@ -141,8 +142,8 @@ public class GasTankBlockEntity extends SmartBlockEntity implements IHaveGoggleI
         if (!isEmpty)
             return true;
 
-        Lang.builder("gui.goggles.fluid_container.capacity")
-                .add(Lang.number(tank.getTankCapacity(0))
+        CreateLang.builder("gui.goggles.fluid_container.capacity")
+                .add(CreateLang.number(tank.getTankCapacity(0))
                         .add(mb)
                         .style(ChatFormatting.DARK_PURPLE))
                 .style(ChatFormatting.DARK_GRAY)

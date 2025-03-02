@@ -111,8 +111,7 @@ public class MmbCrushingWheelBlock extends CrushingWheelBlock {
 
 		if (!controllerExists) {
 			if (!world.getBlockState(controllerPos)
-					.getMaterial()
-					.isReplaceable())
+					.canBeReplaced())
 				return;
 			world.setBlockAndUpdate(controllerPos, CDDBlocks.MMB_CRUSHING_WHEEL_CONTROLLER.getDefaultState()
 					.setValue(VALID, controllerShouldBeValid)

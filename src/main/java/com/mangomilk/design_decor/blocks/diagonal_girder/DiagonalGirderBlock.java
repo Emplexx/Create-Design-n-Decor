@@ -146,7 +146,7 @@ public class DiagonalGirderBlock extends DirectionalBlock implements SimpleWater
 
         context.getLevel().setBlock(context.getClickedPos(),state.setValue(FACING_UP,!state.getValue(FACING_UP)),2);
 
-        playRotateSound(context.getLevel(), context.getClickedPos());
+        IWrenchable.playRotateSound(context.getLevel(), context.getClickedPos());
         return onWrenched;
     }
 

@@ -1,6 +1,5 @@
 package com.mangomilk.design_decor.blocks.ceiling_fan;
 
-import com.jozufozu.flywheel.backend.Backend;
 import com.mangomilk.design_decor.registry.CDDPartialModels;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
@@ -27,8 +26,9 @@ public class CeilingFanRenderer extends KineticBlockEntityRenderer<CeilingFanBlo
                               int light, int overlay) {
         super.renderSafe(be, partialTicks, ms, buffer, light, overlay);
 
-        if (Backend.canUseInstancing(be.getLevel()))
-            return;
+        // TODO definitely crashes
+//        if (Backend.canUseInstancing(be.getLevel()))
+//            return;
 
         BlockState blockState = be.getBlockState();
 

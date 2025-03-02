@@ -2,7 +2,7 @@ package com.mangomilk.design_decor.blocks.containers.green;
 
 import com.mangomilk.design_decor.registry.CDDBlockEntities;
 import com.simibubi.create.api.connectivity.ConnectivityHandler;
-import com.simibubi.create.foundation.utility.VecHelper;
+import net.createmod.catnip.math.VecHelper;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Direction.Axis;
@@ -98,8 +98,7 @@ public class GreenContainerItem extends BlockItem {
 				BlockState blockState = world.getBlockState(offsetPos);
 				if (GreenContainerBlock.isContainer(blockState))
 					continue;
-				if (!blockState.getMaterial()
-					.isReplaceable())
+				if (!blockState.canBeReplaced())
 					return;
 				tanksToPlace++;
 			}

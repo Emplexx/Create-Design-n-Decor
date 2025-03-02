@@ -72,7 +72,7 @@ public class CatwalkBlock extends Block implements IWrenchable, SimpleWaterlogge
 
         context.getLevel().setBlock(context.getClickedPos(),state.setValue(DOWN,!state.getValue(DOWN)),2);
 
-        playRotateSound(context.getLevel(), context.getClickedPos());
+        IWrenchable.playRotateSound(context.getLevel(), context.getClickedPos());
 
 
         return onWrenched;
@@ -113,8 +113,7 @@ public class CatwalkBlock extends Block implements IWrenchable, SimpleWaterlogge
                     Direction.UP
                             .getAxis(),
                     dir -> world.getBlockState(pos.relative(dir))
-                            .getMaterial()
-                            .isReplaceable());
+                            .canBeReplaced());
 
             boolean down = state.getValue(DOWN);
 

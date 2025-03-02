@@ -96,7 +96,7 @@ public class FloodlightBlock extends DirectionalBlock implements SimpleWaterlogg
 
         context.getLevel().setBlock(context.getClickedPos(),state.setValue(TURNED_ON,!state.getValue(TURNED_ON)).setValue(WRENCHED,!state.getValue(WRENCHED)),2);
 
-        playRotateSound(context.getLevel(), context.getClickedPos());
+        IWrenchable.playRotateSound(context.getLevel(), context.getClickedPos());
 
         if (!isOn) {
             context.getLevel().playLocalSound(context.getClickedPos().getX(), context.getClickedPos().getY(), context.getClickedPos().getZ(),

@@ -1,8 +1,10 @@
 package com.mangomilk.design_decor.blocks.large_boiler.capitalism;
 
 import com.simibubi.create.CreateClient;
+import com.simibubi.create.foundation.utility.CreateLang;
 import net.createmod.catnip.lang.Lang;
 import net.createmod.catnip.data.Pair;
+import net.createmod.catnip.outliner.Outliner;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.core.BlockPos;
@@ -53,7 +55,7 @@ public class CapitalismLargeBoilerBlockItem extends BlockItem {
         Outliner.getInstance().showAABB(Pair.of("waterwheel", pos), new AABB(pos).inflate(1)
                         .deflate(contract.x, contract.y, contract.z))
                 .colored(0xFF_ff5d6c);
-        Lang.translate("large_water_wheel.not_enough_space")
+        CreateLang.translate("large_water_wheel.not_enough_space")
                 .color(0xFF_ff5d6c)
                 .sendStatus(localPlayer);
     }

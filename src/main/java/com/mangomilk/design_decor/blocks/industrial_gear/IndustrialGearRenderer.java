@@ -1,15 +1,14 @@
 package com.mangomilk.design_decor.blocks.industrial_gear;
 
-import com.jozufozu.flywheel.backend.Backend;
 import com.mangomilk.design_decor.registry.CDDPartialModels;
 import com.mangomilk.design_decor.registry.CDDBlocks;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.simibubi.create.content.kinetics.base.KineticBlockEntityRenderer;
 import com.simibubi.create.content.kinetics.simpleRelays.BracketedKineticBlockEntity;
 import com.simibubi.create.content.kinetics.simpleRelays.SimpleKineticBlockEntity;
-import com.simibubi.create.foundation.render.CachedBufferer;
-import com.simibubi.create.foundation.render.SuperByteBuffer;
-import com.simibubi.create.foundation.utility.AnimationTickHolder;
+import net.createmod.catnip.animation.AnimationTickHolder;
+import net.createmod.catnip.render.CachedBuffers;
+import net.createmod.catnip.render.SuperByteBuffer;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
@@ -25,8 +24,9 @@ public class IndustrialGearRenderer extends KineticBlockEntityRenderer<Bracketed
     protected void renderSafe(BracketedKineticBlockEntity be, float partialTicks, PoseStack ms,
                               MultiBufferSource buffer, int light, int overlay) {
 
-        if (Backend.canUseInstancing(be.getLevel()))
-            return;
+        // TODO
+//        if (Backend.canUseInstancing(be.getLevel()))
+//            return;
 
         if (!CDDBlocks.LARGE_COGWHEEL.has(be.getBlockState())) {
             super.renderSafe(be, partialTicks, ms, buffer, light, overlay);
@@ -39,12 +39,12 @@ public class IndustrialGearRenderer extends KineticBlockEntityRenderer<Bracketed
         Direction.Axis axis = getRotationAxisOf(be);
         Direction facing = Direction.fromAxisAndDirection(axis, Direction.AxisDirection.POSITIVE);
         renderRotatingBuffer(be,
-                CachedBufferer.partialFacingVertical(CDDPartialModels.SHAFTLESS_LARGE_COGWHEEL, be.getBlockState(), facing),
+                CachedBuffers.partialFacingVertical(CDDPartialModels.SHAFTLESS_LARGE_COGWHEEL, be.getBlockState(), facing),
                 ms, buffer.getBuffer(RenderType.solid()), light);
 
         float angle = getAngleForLargeCogShaft(be, axis);
         SuperByteBuffer shaft =
-                CachedBufferer.partialFacingVertical(CDDPartialModels.EMPTY, be.getBlockState(), facing);
+                CachedBuffers.partialFacingVertical(CDDPartialModels.EMPTY, be.getBlockState(), facing);
         kineticRotationTransform(shaft, be, axis, angle, light);
         shaft.renderInto(ms, buffer.getBuffer(RenderType.solid()));
 

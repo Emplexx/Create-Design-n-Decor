@@ -2,7 +2,7 @@ package com.mangomilk.design_decor.blocks.containers.red;
 
 import com.mangomilk.design_decor.registry.CDDBlockEntities;
 import com.simibubi.create.api.connectivity.ConnectivityHandler;
-import com.simibubi.create.foundation.utility.VecHelper;
+import net.createmod.catnip.math.VecHelper;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Direction.Axis;
@@ -16,6 +16,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 
 public class RedContainerItem extends BlockItem {
@@ -98,9 +99,11 @@ public class RedContainerItem extends BlockItem {
 				BlockState blockState = world.getBlockState(offsetPos);
 				if (RedContainerBlock.isContainer(blockState))
 					continue;
-				if (!blockState.getMaterial()
-					.isReplaceable())
-					return;
+
+				if (!blockState.canBeReplaced()) return;
+//				if (!blockState.getMaterial()
+//					.isReplaceable())
+//					return;
 				tanksToPlace++;
 			}
 		}

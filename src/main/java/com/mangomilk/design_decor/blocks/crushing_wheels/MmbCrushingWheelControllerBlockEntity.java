@@ -9,9 +9,9 @@ import com.simibubi.create.foundation.blockEntity.behaviour.BlockEntityBehaviour
 import com.simibubi.create.foundation.item.ItemHelper;
 import com.simibubi.create.foundation.sound.SoundScapes;
 import com.simibubi.create.foundation.sound.SoundScapes.AmbienceGroup;
-import com.simibubi.create.foundation.utility.NBTHelper;
-import com.simibubi.create.foundation.utility.VecHelper;
+import net.createmod.catnip.math.VecHelper;
 import com.simibubi.create.infrastructure.config.AllConfigs;
+import net.createmod.catnip.nbt.NBTHelper;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Direction.Axis;
@@ -115,8 +115,8 @@ public class MmbCrushingWheelControllerBlockEntity extends CrushingWheelControll
 
 			// Output Items
 			if (facing != Direction.UP) {
-				BlockPos nextPos = worldPosition.offset(facing.getAxis() == Axis.X ? 1f * offset : 0f, (-1f),
-					facing.getAxis() == Axis.Z ? 1f * offset : 0f);
+				BlockPos nextPos = worldPosition.offset(facing.getAxis() == Axis.X ? offset : 0, (-1),
+					facing.getAxis() == Axis.Z ? offset : 0);
 				DirectBeltInputBehaviour behaviour =
 					BlockEntityBehaviour.get(level, nextPos, DirectBeltInputBehaviour.TYPE);
 				if (behaviour != null) {

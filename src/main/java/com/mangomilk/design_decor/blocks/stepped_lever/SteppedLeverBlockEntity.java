@@ -5,9 +5,8 @@ import java.util.List;
 import com.simibubi.create.api.equipment.goggles.IHaveGoggleInformation;
 import com.simibubi.create.foundation.blockEntity.SmartBlockEntity;
 import com.simibubi.create.foundation.blockEntity.behaviour.BlockEntityBehaviour;
-import net.createmod.catnip.lang.Lang;
-import com.simibubi.create.foundation.utility.animation.LerpedFloat;
-import com.simibubi.create.foundation.utility.animation.LerpedFloat.Chaser;
+import com.simibubi.create.foundation.utility.CreateLang;
+import net.createmod.catnip.animation.LerpedFloat;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
@@ -38,7 +37,7 @@ public class SteppedLeverBlockEntity extends SmartBlockEntity implements IHaveGo
 	protected void read(CompoundTag compound, boolean clientPacket) {
 		state = compound.getInt("State");
 		lastChange = compound.getInt("ChangeTimer");
-		clientState.chase(state, 0.2f, Chaser.EXP);
+		clientState.chase(state, 0.2f, LerpedFloat.Chaser.EXP);
 		super.read(compound, clientPacket);
 	}
 
@@ -79,7 +78,8 @@ public class SteppedLeverBlockEntity extends SmartBlockEntity implements IHaveGo
 
 	@Override
 	public boolean addToGoggleTooltip(List<Component> tooltip, boolean isPlayerSneaking) {
-		tooltip.add(componentSpacing.plainCopy().append(Lang.translateDirect("tooltip.analogStrength", this.state)));
+		Component componentSpacing = Component.literal("    ");
+		tooltip.add(componentSpacing.plainCopy().append(CreateLang.translateDirect("tooltip.analogStrength", this.state)));
 
 		return true;
 	}

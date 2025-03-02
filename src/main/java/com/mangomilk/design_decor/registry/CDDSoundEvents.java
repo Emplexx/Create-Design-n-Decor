@@ -23,7 +23,7 @@ public class CDDSoundEvents {
     public static RegistryObject<SoundEvent> FLOODLIGHT_ON = registerSoundEvent("floodlight_on");
     public static RegistryObject<SoundEvent> FLOODLIGHT_OFF = registerSoundEvent("floodlight_off");
     private static RegistryObject<SoundEvent> registerSoundEvent(String name) {
-        return SOUND_EVENTS.register(name, () -> new SoundEvent(new ResourceLocation(DesignDecor.MOD_ID, name)));
+        return SOUND_EVENTS.register(name, () -> SoundEvent.createVariableRangeEvent(new ResourceLocation(DesignDecor.MOD_ID, name)));
     }
 
 

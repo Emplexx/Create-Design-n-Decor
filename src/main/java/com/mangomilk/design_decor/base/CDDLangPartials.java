@@ -3,11 +3,10 @@ package com.mangomilk.design_decor.base;
 import com.google.common.base.Supplier;
 import com.google.gson.JsonElement;
 import com.mangomilk.design_decor.DesignDecor;
-import com.simibubi.create.foundation.data.LangPartial;
 import com.simibubi.create.foundation.utility.FilesHelper;
 import net.createmod.catnip.lang.Lang;
 
-public enum CDDLangPartials implements LangPartial {
+public enum CDDLangPartials {
     INTERFACE("UI & Messages");
 
     ;
