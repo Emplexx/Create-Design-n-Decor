@@ -90,6 +90,7 @@ import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
@@ -121,6 +122,10 @@ import static com.simibubi.create.foundation.data.TagGen.*;
 @ParametersAreNonnullByDefault
 @MethodsReturnNonnullByDefault
 public class CDDBlocks {
+
+    public static final RecipeCategory BB = RecipeCategory.BUILDING_BLOCKS;
+    private static final RecipeCategory DECO = RecipeCategory.DECORATIONS;
+
     //LAMPS
     public static final BlockEntry<LampBlock> BRASS_LAMP = REGISTRATE.block("brass_lamp", LampBlock::new)
             .initialProperties(SharedProperties::copperMetal)
@@ -158,16 +163,16 @@ public class CDDBlocks {
             .register();
 
 
-public static final BlockEntry<ScrewBlock> ZINC_SCREW = REGISTRATE.block("zinc_screw", ScrewBlock::new)
-        .initialProperties(SharedProperties::copperMetal)
-        .properties(BlockBehaviour.Properties::noOcclusion)
-        .transform(pickaxeOnly())
-        .addLayer(() -> RenderType::cutoutMipped)
-        .blockstate(new ScrewGenerator()::generate)
-        .item()
-        .build()
-        .lang("Zinc Screw")
-        .register();
+    public static final BlockEntry<ScrewBlock> ZINC_SCREW = REGISTRATE.block("zinc_screw", ScrewBlock::new)
+            .initialProperties(SharedProperties::copperMetal)
+            .properties(BlockBehaviour.Properties::noOcclusion)
+            .transform(pickaxeOnly())
+            .addLayer(() -> RenderType::cutoutMipped)
+            .blockstate(new ScrewGenerator()::generate)
+            .item()
+            .build()
+            .lang("Zinc Screw")
+            .register();
     public static final BlockEntry<ScrewBlock> BRASS_SCREW = REGISTRATE.block("brass_screw", ScrewBlock::new)
             .initialProperties(SharedProperties::copperMetal)
             .properties(BlockBehaviour.Properties::noOcclusion)
@@ -1430,7 +1435,9 @@ public static final BlockEntry<ScrewBlock> ZINC_SCREW = REGISTRATE.block("zinc_s
                     .onRegister(casingConnectivity((block, cc) -> cc.makeCasing(block, CDDSpriteShifts.ZINC_CHECKER_TILES)))
                     .properties(p -> p.mapColor(MapColor.COLOR_GRAY))
                     .properties(p -> p.sound(SoundType.COPPER))
-                    .recipe((c, p) -> p.stonecutting(DataIngredient.tag(AllTags.forgeItemTag("ingots/zinc")), c::get, 4))
+
+                    // TODO add recipe category to everywhere
+                    .recipe((c, p) -> p.stonecutting(DataIngredient.tag(AllTags.forgeItemTag("ingots/zinc")), BB, c::get, 4))
                     .properties(BlockBehaviour.Properties::requiresCorrectToolForDrops)
                     .transform(pickaxeOnly())
                     .simpleItem()
@@ -1442,7 +1449,7 @@ public static final BlockEntry<ScrewBlock> ZINC_SCREW = REGISTRATE.block("zinc_s
                     .initialProperties(SharedProperties::wooden)
                     .onRegister(connectedTextures(() -> new VerticalCtBehavior(CDDSpriteShifts.WOOD_SUPPORT)))
                     .properties(p -> p.sound(SoundType.WOOD))
-                    .recipe((c, p) -> p.stonecutting(DataIngredient.tag(ItemTags.PLANKS), c::get, 4))
+                    .recipe((c, p) -> p.stonecutting(DataIngredient.tag(ItemTags.PLANKS), BB, c::get, 4))
                     .properties(BlockBehaviour.Properties::noOcclusion)
                     .blockstate((ctx, prov) -> prov.simpleBlock(ctx.getEntry(), AssetLookup.partialBaseModel(ctx, prov)))
                     .transform(axeOnly())
@@ -1457,7 +1464,7 @@ public static final BlockEntry<ScrewBlock> ZINC_SCREW = REGISTRATE.block("zinc_s
                     .initialProperties(SharedProperties::softMetal)
                     .onRegister(connectedTextures(() -> new VerticalCtBehavior(CDDSpriteShifts.METAL_SUPPORT)))
                     .properties(p -> p.sound(SoundType.COPPER))
-                    .recipe((c, p) -> p.stonecutting(DataIngredient.tag(AllTags.forgeItemTag("ingots/iron")), c::get, 4))
+                    .recipe((c, p) -> p.stonecutting(DataIngredient.tag(AllTags.forgeItemTag("ingots/iron")), BB, c::get, 4))
                     .properties(BlockBehaviour.Properties::noOcclusion)
                     .blockstate(new MetalSupportGenerator()::generate)
                     .transform(axeOnly())
@@ -1473,7 +1480,7 @@ public static final BlockEntry<ScrewBlock> ZINC_SCREW = REGISTRATE.block("zinc_s
                     .properties(p -> p.sound(SoundType.COPPER))
                     .properties(BlockBehaviour.Properties::noOcclusion)
                     .transform(axeOnly())
-                    .recipe((c, p) -> p.stonecutting(DataIngredient.tag(AllTags.forgeItemTag("ingots/iron")), c::get, 4))
+                    .recipe((c, p) -> p.stonecutting(DataIngredient.tag(AllTags.forgeItemTag("ingots/iron")), BB, c::get, 4))
                     .blockstate(BlockStateGen.horizontalBlockProvider(true))
                     .item()
                     .transform(customItemModel())
@@ -2149,7 +2156,7 @@ public static final BlockEntry<ScrewBlock> ZINC_SCREW = REGISTRATE.block("zinc_s
             .properties(p -> p.sound(SoundType.NETHERITE_BLOCK))
             .properties(p -> p.requiresCorrectToolForDrops())
             .transform(pickaxeOnly())
-                            .recipe((c, p) -> p.stonecutting(DataIngredient.tag(AllTags.forgeItemTag("ingots/iron")), c::get, 8))
+                            .recipe((c, p) -> p.stonecutting(DataIngredient.tag(AllTags.forgeItemTag("ingots/iron")), BB, c::get, 8))
     
             .blockstate((c, p) -> CDDVanillaBlockStates.generateSlabBlockState(c, p, "metal_plate"))
             .tag(BlockTags.NEEDS_STONE_TOOL)
@@ -2168,7 +2175,7 @@ public static final BlockEntry<ScrewBlock> ZINC_SCREW = REGISTRATE.block("zinc_s
                     .blockstate((c, p) -> CDDVanillaBlockStates.generateSlabBlockState(c, p, "metal_sheet"))
                     .tag(BlockTags.NEEDS_STONE_TOOL)
                     .tag(BlockTags.SLABS)
-                    .recipe((c, p) -> p.stonecutting(DataIngredient.tag(AllTags.forgeItemTag("ingots/iron")), c::get, 8))
+                    .recipe((c, p) -> p.stonecutting(DataIngredient.tag(AllTags.forgeItemTag("ingots/iron")), BB, c::get, 8))
     
                     .item()
                     .transform(customItemModel("metal_sheet_bottom"))
@@ -2194,7 +2201,7 @@ public static final BlockEntry<ScrewBlock> ZINC_SCREW = REGISTRATE.block("zinc_s
                 .blockstate((c, p) -> CDDVanillaBlockStates.generateWallBlockState(c, p, name))
                 .tag(BlockTags.NEEDS_STONE_TOOL)
                 .tag(BlockTags.WALLS)
-                .recipe((c, p) -> p.stonecutting(DataIngredient.tag(AllTags.forgeItemTag("ingots/iron")), c::get, 4))
+                .recipe((c, p) -> p.stonecutting(DataIngredient.tag(AllTags.forgeItemTag("ingots/iron")), BB, c::get, 4))
 
                 .item()
                 .transform(b -> CDDVanillaBlockStates.transformWallItem(b, name))
@@ -2213,7 +2220,7 @@ public static final BlockEntry<ScrewBlock> ZINC_SCREW = REGISTRATE.block("zinc_s
                     .transform(pickaxeOnly())
                     .blockstate((c, p) -> CDDVanillaBlockStates.generateStairBlockState(c, p, name))
                     .tag(BlockTags.NEEDS_STONE_TOOL)
-                    .recipe((c, p) -> p.stonecutting(DataIngredient.tag(AllTags.forgeItemTag("ingots/iron")), c::get, 4))
+                    .recipe((c, p) -> p.stonecutting(DataIngredient.tag(AllTags.forgeItemTag("ingots/iron")), BB, c::get, 4))
     
                     .tag(BlockTags.STAIRS)
                     .item()
@@ -2230,7 +2237,7 @@ public static final BlockEntry<ScrewBlock> ZINC_SCREW = REGISTRATE.block("zinc_s
                     .transform(pickaxeOnly())
                     .blockstate((c, p) -> CDDVanillaBlockStates.generateStairBlockState(c, p, name))
                     .tag(BlockTags.NEEDS_STONE_TOOL)
-                    .recipe((c, p) -> p.stonecutting(DataIngredient.tag(AllTags.forgeItemTag("ingots/iron")), c::get, 4))
+                    .recipe((c, p) -> p.stonecutting(DataIngredient.tag(AllTags.forgeItemTag("ingots/iron")), BB, c::get, 4))
     
                     .tag(BlockTags.STAIRS)
                     .item()
@@ -2251,7 +2258,7 @@ public static final BlockEntry<ScrewBlock> ZINC_SCREW = REGISTRATE.block("zinc_s
                 .properties(p -> p.requiresCorrectToolForDrops())
                 .transform(pickaxeOnly())
                 .blockstate(simpleCubeAll(name))
-                .recipe((c, p) -> p.stonecutting(DataIngredient.tag(AllTags.forgeItemTag("ingots/iron")), c::get, 4))
+                .recipe((c, p) -> p.stonecutting(DataIngredient.tag(AllTags.forgeItemTag("ingots/iron")), BB, c::get, 4))
 
                 .tag(BlockTags.NEEDS_STONE_TOOL)
                 .transform(tagBlockAndItem(name))
@@ -2290,7 +2297,7 @@ public static final BlockEntry<ScrewBlock> ZINC_SCREW = REGISTRATE.block("zinc_s
                     .transform(pickaxeOnly())
                     .blockstate(simpleCubeAll(color + "_"+name))
                     .tag(BlockTags.NEEDS_STONE_TOOL)
-                    .recipe((c, p) -> p.stonecutting(DataIngredient.items(CDDBlocks.METAL_PLATE.get().asItem()), c::get, 1))
+                    .recipe((c, p) -> p.stonecutting(DataIngredient.items(CDDBlocks.METAL_PLATE.get().asItem()), BB, c::get, 1))
     
                     .item()
                     .build()
@@ -2307,7 +2314,7 @@ public static final BlockEntry<ScrewBlock> ZINC_SCREW = REGISTRATE.block("zinc_s
                     .blockstate((c, p) -> CDDVanillaBlockStates.generateWallBlockState(c, p, color + "_"+name))
                     .tag(BlockTags.NEEDS_STONE_TOOL)
                     .tag(BlockTags.WALLS)
-                    .recipe((c, p) -> p.stonecutting(DataIngredient.items(CDDBlocks.METAL_PLATE.get().asItem()), c::get, 1))
+                    .recipe((c, p) -> p.stonecutting(DataIngredient.items(CDDBlocks.METAL_PLATE.get().asItem()), BB, c::get, 1))
     
                     .item()
                     .transform(b -> CDDVanillaBlockStates.transformWallItem(b, color + "_"+name))
@@ -2322,7 +2329,7 @@ public static final BlockEntry<ScrewBlock> ZINC_SCREW = REGISTRATE.block("zinc_s
                         .properties(p -> p.requiresCorrectToolForDrops())
                         .transform(pickaxeOnly())
                         .blockstate((c, p) -> CDDVanillaBlockStates.generateStairBlockState(c, p, color + "_" + name))
-                        .recipe((c, p) -> p.stonecutting(DataIngredient.items(CDDBlocks.METAL_PLATE.get().asItem()), c::get, 1))
+                        .recipe((c, p) -> p.stonecutting(DataIngredient.items(CDDBlocks.METAL_PLATE.get().asItem()), BB, c::get, 1))
         
                         .tag(BlockTags.NEEDS_STONE_TOOL)
                         .tag(BlockTags.STAIRS)
@@ -2341,7 +2348,7 @@ public static final BlockEntry<ScrewBlock> ZINC_SCREW = REGISTRATE.block("zinc_s
                     .blockstate((c, p) -> CDDVanillaBlockStates.generateStairBlockState(c, p, color + "_"+name))
                     .tag(BlockTags.NEEDS_STONE_TOOL)
                     .tag(BlockTags.STAIRS)
-                    .recipe((c, p) -> p.stonecutting(DataIngredient.items(CDDBlocks.METAL_PLATE.get().asItem()), c::get, 1))
+                    .recipe((c, p) -> p.stonecutting(DataIngredient.items(CDDBlocks.METAL_PLATE.get().asItem()), BB, c::get, 1))
     
                     .item()
                     .transform(b -> CDDVanillaBlockStates.transformStairItem(b, color + "_"+name))
@@ -2355,7 +2362,7 @@ public static final BlockEntry<ScrewBlock> ZINC_SCREW = REGISTRATE.block("zinc_s
                     .properties(p -> p.sound(SoundType.NETHERITE_BLOCK))
                     .properties(p -> p.requiresCorrectToolForDrops())
                     .transform(pickaxeOnly())
-                    .recipe((c, p) -> p.stonecutting(DataIngredient.items(CDDBlocks.METAL_PLATE.get().asItem()), c::get, 2))
+                    .recipe((c, p) -> p.stonecutting(DataIngredient.items(CDDBlocks.METAL_PLATE.get().asItem()), BB, c::get, 2))
     
                     .blockstate((c, p) -> CDDVanillaBlockStates.generateSlabBlockState(c, p, color + "_"+name))
                     .tag(BlockTags.NEEDS_STONE_TOOL)

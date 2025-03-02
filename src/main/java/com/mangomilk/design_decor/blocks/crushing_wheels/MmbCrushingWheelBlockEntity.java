@@ -11,8 +11,8 @@ import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 @EventBusSubscriber
 public class MmbCrushingWheelBlockEntity extends CrushingWheelBlockEntity {
 
-	public static final DamageSource DAMAGE_SOURCE = new DamageSource("create.crush").bypassArmor()
-			.setScalesWithDifficulty();
+//	public static final DamageSource DAMAGE_SOURCE = new DamageSource("create.crush").bypassArmor()
+//			.setScalesWithDifficulty();
 
 	public MmbCrushingWheelBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState state) {
 		super(type, pos, state);

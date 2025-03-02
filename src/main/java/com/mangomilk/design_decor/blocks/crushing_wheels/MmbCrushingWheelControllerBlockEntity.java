@@ -6,6 +6,7 @@ import com.simibubi.create.content.kinetics.crusher.CrushingWheelBlockEntity;
 import com.simibubi.create.content.kinetics.crusher.CrushingWheelControllerBlockEntity;
 import com.simibubi.create.content.processing.recipe.ProcessingRecipe;
 import com.simibubi.create.foundation.blockEntity.behaviour.BlockEntityBehaviour;
+import com.simibubi.create.foundation.damageTypes.CreateDamageSources;
 import com.simibubi.create.foundation.item.ItemHelper;
 import com.simibubi.create.foundation.sound.SoundScapes;
 import com.simibubi.create.foundation.sound.SoundScapes.AmbienceGroup;
@@ -200,7 +201,7 @@ public class MmbCrushingWheelControllerBlockEntity extends CrushingWheelControll
 					processingEntity.setPos(entityOutPos.x, entityOutPos.y, entityOutPos.z);
 				}
 			}
-			processingEntity.hurt(CrushingWheelBlockEntity.DAMAGE_SOURCE, crusherDamage);
+			processingEntity.hurt(CreateDamageSources.crush(level), crusherDamage);
 			if (!processingEntity.isAlive()) {
 				processingEntity.setPos(entityOutPos.x, entityOutPos.y, entityOutPos.z);
 			}

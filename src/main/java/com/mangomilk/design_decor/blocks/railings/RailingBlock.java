@@ -24,6 +24,7 @@ import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.level.storage.loot.LootContext;
+import net.minecraft.world.level.storage.loot.LootParams;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
@@ -91,16 +92,10 @@ public class RailingBlock extends Block {
         }
     }
 
-
-
-
-
-
-
-
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> p_55125_) {
         p_55125_.add(WATERLOGGED,NORTH,SOUTH,WEST,EAST);
     }
+
     public VoxelShape getShape(BlockState state, BlockGetter p_54562_, BlockPos p_54563_, CollisionContext p_54564_) {
 
         VoxelShape shape = CDDShapes.EMPTY;
@@ -120,10 +115,12 @@ public class RailingBlock extends Block {
 
         return shape;
     }
-        @Override
+
+    @Override
     public FluidState getFluidState(BlockState p_51475_) {
         return p_51475_.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(p_51475_);
     }
+
     @Override
     public BlockState updateShape(BlockState p_51461_, Direction p_51462_, BlockState p_51463_, LevelAccessor p_51464_, BlockPos p_51465_, BlockPos p_51466_) {
         if (p_51461_.getValue(WATERLOGGED)) {
@@ -133,33 +130,23 @@ public class RailingBlock extends Block {
         return super.updateShape(p_51461_, p_51462_, p_51463_, p_51464_, p_51465_, p_51466_);
     }
 
-
     @Override
-    public List<ItemStack> getDrops(BlockState state, LootContext.Builder builder) {
+    public List<ItemStack> getDrops(BlockState state, LootParams.Builder builder) {
+        int faces = 0;
 
+        if (state.getValue(NORTH)) faces++;
+        if (state.getValue(SOUTH)) faces++;
+        if (state.getValue(EAST)) faces++;
+        if (state.getValue(WEST)) faces++;
 
-        int numero = 0;
+        ResourceLocation resourceLocation = this.getLootTable();
+        LootParams loot = builder.withParameter(LootContextParams.BLOCK_STATE, state).create(LootContextParamSets.BLOCK);
+        ServerLevel serverLevel = loot.getLevel();
+        LootTable lootTable = serverLevel.getServer().getLootData().getLootTable(resourceLocation);
 
-        if(state.getValue(NORTH))
-            numero++;
-        if(state.getValue(SOUTH))
-            numero++;
-        if(state.getValue(EAST))
-            numero++;
-        if(state.getValue(WEST))
-            numero++;
-        ResourceLocation resourcelocation = this.getLootTable();
-        LootContext lootcontext = builder.withParameter(LootContextParams.BLOCK_STATE, state).create(LootContextParamSets.BLOCK);
-        ServerLevel serverlevel = lootcontext.getLevel();
-        LootTable lootTable = serverlevel.getServer().getLootTables().get(resourcelocation);
-        
-        
-        ItemStack stack = lootTable.getRandomItems(lootcontext).get(0);
-        stack.setCount(numero);
-
+        ItemStack stack = lootTable.getRandomItems(loot).get(0);
+        stack.setCount(faces);
 
         return List.of(stack);
-
-
     }
 }
