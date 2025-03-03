@@ -99,6 +99,7 @@ import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.MapColor;
+import net.minecraft.world.level.material.PushReaction;
 import net.minecraftforge.client.model.generators.ConfiguredModel;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.IForgeRegistry;
@@ -970,12 +971,14 @@ public class CDDBlocks {
     //CRUSHING WHEELS
     public static final BlockEntry<MmbCrushingWheelControllerBlock> MMB_CRUSHING_WHEEL_CONTROLLER =
             REGISTRATE.block("crushing_wheel_controller", MmbCrushingWheelControllerBlock::new)
-//                    .initialProperties(new CrushingWheelBlock(BlockBehaviour.Properties.of()))
+//                  .initialProperties(new CrushingWheelBlock(BlockBehaviour.Properties.of()))
 //                   TODO .initialProperties(SharedProperties.CRUSHING_WHEEL_CONTROLLER_MATERIAL)
-                    .properties(p -> p.mapColor(MapColor.STONE))
-                    .properties(p -> p.noOcclusion()
+                    .properties(p -> p.mapColor(MapColor.STONE)
+                            .noOcclusion()
                             .noLootTable()
-                            .air())
+                            .air()
+                            .noCollission()
+                            .pushReaction(PushReaction.BLOCK))
                     .blockstate((c, p) -> p.getVariantBuilder(c.get())
                             .forAllStatesExcept(BlockStateGen.mapToAir(p), MmbCrushingWheelControllerBlock.FACING))
                     .register();

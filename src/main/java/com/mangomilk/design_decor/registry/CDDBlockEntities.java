@@ -17,9 +17,7 @@ import com.mangomilk.design_decor.blocks.stepped_lever.SteppedLeverBlockEntity;
 import com.mangomilk.design_decor.blocks.stepped_lever.SteppedLeverRenderer;
 import com.mangomilk.design_decor.blocks.stepped_lever.SteppedLeverVisual;
 import com.simibubi.create.AllBlocks;
-import com.simibubi.create.AllPartialModels;
 import com.simibubi.create.content.kinetics.base.KineticBlockEntityRenderer;
-import com.simibubi.create.content.kinetics.base.SingleAxisRotatingVisual;
 import com.simibubi.create.content.kinetics.simpleRelays.BracketedKineticBlockEntity;
 import com.tterrag.registrate.util.entry.BlockEntityEntry;
 

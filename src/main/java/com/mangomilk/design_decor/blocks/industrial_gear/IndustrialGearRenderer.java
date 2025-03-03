@@ -24,7 +24,7 @@ public class IndustrialGearRenderer extends KineticBlockEntityRenderer<Bracketed
     protected void renderSafe(BracketedKineticBlockEntity be, float partialTicks, PoseStack ms,
                               MultiBufferSource buffer, int light, int overlay) {
 
-        // TODO
+        // TODO flywheel backend instancing
 //        if (Backend.canUseInstancing(be.getLevel()))
 //            return;
 

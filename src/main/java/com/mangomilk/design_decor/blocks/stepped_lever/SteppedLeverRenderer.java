@@ -41,13 +41,6 @@ public class SteppedLeverRenderer extends SafeBlockEntityRenderer<SteppedLeverBl
 				.translate(-1 / 2f, -1 / 4f, -1 / 2f);
 		handle.light(light)
 				.renderInto(ms, vb);
-
-		//// Indicator
-		//int color = Color.mixColors(0x2C0300, 0xCD0000, state / 15f);
-		//SuperByteBuffer indicator = transform(CachedBuffers.partial(AllPartialModels.ANALOG_LEVER_INDICATOR, leverState), leverState);
-		//indicator.light(light)
-		//		.color(color)
-		//		.renderInto(ms, vb);
 	}
 
 	private SuperByteBuffer transform(SuperByteBuffer buffer, BlockState leverState) {
@@ -56,8 +49,6 @@ public class SteppedLeverRenderer extends SafeBlockEntityRenderer<SteppedLeverBl
 		float rY = AngleHelper.horizontalAngle(leverState.getValue(SteppedLeverBlock.FACING));
 		buffer.rotateCentered((float) (rY / 180 * Math.PI), Direction.UP);
 		buffer.rotateCentered((float) (rX / 180 * Math.PI), Direction.EAST);
-//		buffer.rotateCentered(Direction.UP, (float) (rY / 180 * Math.PI));
-//		buffer.rotateCentered(Direction.EAST, (float) (rX / 180 * Math.PI));
 		return buffer;
 	}
 
