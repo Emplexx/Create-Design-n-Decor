@@ -1,7 +1,7 @@
 package com.mangomilk.design_decor.registry;
 
+import com.mangomilk.design_decor.CDDStressValues;
 import com.mangomilk.design_decor.DesignDecor;
-import com.mangomilk.design_decor.StressHelper;
 import com.mangomilk.design_decor.base.CDDBuilderTransformer;
 import com.mangomilk.design_decor.base.CDDVanillaBlockStates;
 import com.mangomilk.design_decor.blocks.*;
@@ -105,8 +105,8 @@ import net.minecraftforge.registries.IForgeRegistry;
 
 import javax.annotation.ParametersAreNonnullByDefault;
 
+import java.util.ArrayList;
 import java.util.Collections;
-import java.util.function.DoubleSupplier;
 
 import static com.mangomilk.design_decor.DesignDecor.REGISTRATE;
 import static com.mangomilk.design_decor.base.CDDBuilderTransformer.*;
@@ -305,7 +305,7 @@ public class CDDBlocks {
                     .properties(p -> p.sound(SoundType.NETHERITE_BLOCK))
                     .properties(BlockBehaviour.Properties::requiresCorrectToolForDrops)
                     .transform(pickaxeOnly())
-                    .transform(StressHelper.setNoImpact())
+                    .transform(CDDStressValues.setNoImpact())
                     .blockstate(BlockStateGen.axisBlockProvider(false))
                     .onRegister(CreateRegistrate.blockModel(() -> BracketedKineticBlockModel::new))
                     .item(IndustrialGearBlockItem::new)
@@ -320,7 +320,7 @@ public class CDDBlocks {
                     .properties(p -> p.sound(SoundType.NETHERITE_BLOCK))
                     .properties(BlockBehaviour.Properties::requiresCorrectToolForDrops)
                     .transform(pickaxeOnly())
-                    .transform(StressHelper.setNoImpact())
+                    .transform(CDDStressValues.setNoImpact())
                     .blockstate(BlockStateGen.axisBlockProvider(false))
                     .onRegister(CreateRegistrate.blockModel(() -> BracketedKineticBlockModel::new))
                     .item(IndustrialGearBlockItem::new)
@@ -386,7 +386,7 @@ public class CDDBlocks {
             .blockstate(BlockStateGen.directionalBlockProvider(true))
             .item()
             .build()
-            .lang("Aluminium Boiler")
+            .lang("Special Aluminium Boiler")
             .register();
     public static final BlockEntry<AluminumLargeBoilerBlock> LARGE_ALUMINUM_BOILER = REGISTRATE.block("aluminium_boiler_large",
                     p -> new AluminumLargeBoilerBlock(p, AllTags.forgeItemTag("ingots/aluminium")))
@@ -668,7 +668,7 @@ public class CDDBlocks {
             .blockstate((c, p) -> p.simpleBlock(c.getEntry(), AssetLookup.partialBaseModel(c, p)))
             .item()
             .build()
-            .lang("Compact Fluid Tank")
+            .lang("Compact Copper Fluid Tank")
             .register();
 
     //CONTAINERS
@@ -963,6 +963,8 @@ public class CDDBlocks {
             .lang("Blank Sign")
             .register();
 
+    public static final ArrayList<BlockEntry<SignBlock>> LETTER_SIGNS = new ArrayList<>();
+
     public static final BlockEntry<SignBlock> LETTER_SIGN = generateSigns();
 
     //CRUSHING WHEELS
@@ -986,7 +988,7 @@ public class CDDBlocks {
                     .transform(pickaxeOnly())
                     .blockstate((c, p) -> BlockStateGen.axisBlock(c, p, s -> AssetLookup.partialBaseModel(c, p)))
                     .addLayer(() -> RenderType::cutoutMipped)
-                    .transform(StressHelper.setImpact(8.0))
+                    .transform(CDDStressValues.setImpact(8.0))
                     .item()
                     .transform(customItemModel())
                     .lang("Granite Crushing Wheel")
@@ -999,7 +1001,7 @@ public class CDDBlocks {
                     .transform(pickaxeOnly())
                     .blockstate((c, p) -> BlockStateGen.axisBlock(c, p, s -> AssetLookup.partialBaseModel(c, p)))
                     .addLayer(() -> RenderType::cutoutMipped)
-                    .transform(StressHelper.setImpact(8.0))
+                    .transform(CDDStressValues.setImpact(8.0))
                     .item()
                     .transform(customItemModel())
                     .lang("Diorite Crushing Wheel")
@@ -1014,7 +1016,7 @@ public class CDDBlocks {
                     .transform(pickaxeOnly())
                     .blockstate((c, p) -> BlockStateGen.axisBlock(c, p, s -> AssetLookup.partialBaseModel(c, p)))
                     .addLayer(() -> RenderType::cutoutMipped)
-                    .transform(StressHelper.setImpact(8.0))
+                    .transform(CDDStressValues.setImpact(8.0))
                     .item()
                     .transform(customItemModel())
                     .lang("Limestone Crushing Wheel")
@@ -1028,7 +1030,7 @@ public class CDDBlocks {
                     .transform(pickaxeOnly())
                     .blockstate((c, p) -> BlockStateGen.axisBlock(c, p, s -> AssetLookup.partialBaseModel(c, p)))
                     .addLayer(() -> RenderType::cutoutMipped)
-                    .transform(StressHelper.setImpact(8.0))
+                    .transform(CDDStressValues.setImpact(8.0))
                     .item()
                     .transform(customItemModel())
                     .lang("Ochrum Crushing Wheel")
@@ -1042,7 +1044,7 @@ public class CDDBlocks {
                     .transform(pickaxeOnly())
                     .blockstate((c, p) -> BlockStateGen.axisBlock(c, p, s -> AssetLookup.partialBaseModel(c, p)))
                     .addLayer(() -> RenderType::cutoutMipped)
-                    .transform(StressHelper.setImpact(8.0))
+                    .transform(CDDStressValues.setImpact(8.0))
                     .item()
                     .transform(customItemModel())
                     .lang("Scorchia Crushing Wheel")
@@ -1056,7 +1058,7 @@ public class CDDBlocks {
                     .transform(pickaxeOnly())
                     .blockstate((c, p) -> BlockStateGen.axisBlock(c, p, s -> AssetLookup.partialBaseModel(c, p)))
                     .addLayer(() -> RenderType::cutoutMipped)
-                    .transform(StressHelper.setImpact(8.0))
+                    .transform(CDDStressValues.setImpact(8.0))
                     .item()
                     .transform(customItemModel())
                     .lang("Scoria Crushing Wheel")
@@ -1069,7 +1071,7 @@ public class CDDBlocks {
                     .transform(pickaxeOnly())
                     .blockstate((c, p) -> BlockStateGen.axisBlock(c, p, s -> AssetLookup.partialBaseModel(c, p)))
                     .addLayer(() -> RenderType::cutoutMipped)
-                    .transform(StressHelper.setImpact(8.0))
+                    .transform(CDDStressValues.setImpact(8.0))
                     .item()
                     .transform(customItemModel())
                     .lang("Tuff Crushing Wheel")
@@ -1083,7 +1085,7 @@ public class CDDBlocks {
                     .transform(pickaxeOnly())
                     .blockstate((c, p) -> BlockStateGen.axisBlock(c, p, s -> AssetLookup.partialBaseModel(c, p)))
                     .addLayer(() -> RenderType::cutoutMipped)
-                    .transform(StressHelper.setImpact(8.0))
+                    .transform(CDDStressValues.setImpact(8.0))
                     .item()
                     .transform(customItemModel())
                     .lang("Veridium Crushing Wheel")
@@ -1096,7 +1098,7 @@ public class CDDBlocks {
                     .transform(pickaxeOnly())
                     .blockstate((c, p) -> BlockStateGen.axisBlock(c, p, s -> AssetLookup.partialBaseModel(c, p)))
                     .addLayer(() -> RenderType::cutoutMipped)
-                    .transform(StressHelper.setImpact(8.0))
+                    .transform(CDDStressValues.setImpact(8.0))
                     .item()
                     .transform(customItemModel())
                     .lang("Dripstone Crushing Wheel")
@@ -1109,7 +1111,7 @@ public class CDDBlocks {
                     .transform(pickaxeOnly())
                     .blockstate((c, p) -> BlockStateGen.axisBlock(c, p, s -> AssetLookup.partialBaseModel(c, p)))
                     .addLayer(() -> RenderType::cutoutMipped)
-                    .transform(StressHelper.setImpact(8.0))
+                    .transform(CDDStressValues.setImpact(8.0))
                     .item()
                     .transform(customItemModel())
                     .lang("Deepslate Crushing Wheel")
@@ -1123,7 +1125,7 @@ public class CDDBlocks {
                     .transform(pickaxeOnly())
                     .blockstate((c, p) -> BlockStateGen.axisBlock(c, p, s -> AssetLookup.partialBaseModel(c, p)))
                     .addLayer(() -> RenderType::cutoutMipped)
-                    .transform(StressHelper.setImpact(8.0))
+                    .transform(CDDStressValues.setImpact(8.0))
                     .item()
                     .transform(customItemModel())
                     .lang("Crimsite Crushing Wheel")
@@ -1136,7 +1138,7 @@ public class CDDBlocks {
                     .transform(pickaxeOnly())
                     .blockstate((c, p) -> BlockStateGen.axisBlock(c, p, s -> AssetLookup.partialBaseModel(c, p)))
                     .addLayer(() -> RenderType::cutoutMipped)
-                    .transform(StressHelper.setImpact(8.0))
+                    .transform(CDDStressValues.setImpact(8.0))
                     .item()
                     .transform(customItemModel())
                     .lang("Calcite Crushing Wheel")
@@ -1150,7 +1152,7 @@ public class CDDBlocks {
                     .transform(pickaxeOnly())
                     .blockstate((c, p) -> BlockStateGen.axisBlock(c, p, s -> AssetLookup.partialBaseModel(c, p)))
                     .addLayer(() -> RenderType::cutoutMipped)
-                    .transform(StressHelper.setImpact(8.0))
+                    .transform(CDDStressValues.setImpact(8.0))
                     .item()
                     .transform(customItemModel())
                     .lang("Asurine Crushing Wheel")
@@ -1162,7 +1164,7 @@ public class CDDBlocks {
                     .properties(p -> p.destroyTime(1.25f))
                     .transform(pickaxeOnly())
                     .blockstate((c, p) -> p.simpleBlock(c.getEntry(), AssetLookup.partialBaseModel(c, p)))
-                    .transform(StressHelper.setImpact(4.0))
+                    .transform(CDDStressValues.setImpact(4.0))
                     .item()
                     .transform(customItemModel())
                     .lang("Granite Millstone")
@@ -1173,7 +1175,7 @@ public class CDDBlocks {
                     .properties(p -> p.destroyTime(1.25f))
                     .transform(pickaxeOnly())
                     .blockstate((c, p) -> p.simpleBlock(c.getEntry(), AssetLookup.partialBaseModel(c, p)))
-                    .transform(StressHelper.setImpact(4.0))
+                    .transform(CDDStressValues.setImpact(4.0))
                     .item()
                     .transform(customItemModel())
                     .lang("Diorite Millstone")
@@ -1185,7 +1187,7 @@ public class CDDBlocks {
                     .properties(p -> p.mapColor(MapColor.SAND))
                     .transform(pickaxeOnly())
                     .blockstate((c, p) -> p.simpleBlock(c.getEntry(), AssetLookup.partialBaseModel(c, p)))
-                    .transform(StressHelper.setImpact(4.0))
+                    .transform(CDDStressValues.setImpact(4.0))
                     .item()
                     .transform(customItemModel())
                     .lang("Limestone Millstone")
@@ -1197,7 +1199,7 @@ public class CDDBlocks {
                     .properties(p -> p.mapColor(MapColor.TERRACOTTA_YELLOW))
                     .transform(pickaxeOnly())
                     .blockstate((c, p) -> p.simpleBlock(c.getEntry(), AssetLookup.partialBaseModel(c, p)))
-                    .transform(StressHelper.setImpact(4.0))
+                    .transform(CDDStressValues.setImpact(4.0))
                     .item()
                     .transform(customItemModel())
                     .lang("Ochrum Millstone")
@@ -1209,7 +1211,7 @@ public class CDDBlocks {
                     .properties(p -> p.mapColor(MapColor.TERRACOTTA_GRAY))
                     .transform(pickaxeOnly())
                     .blockstate((c, p) -> p.simpleBlock(c.getEntry(), AssetLookup.partialBaseModel(c, p)))
-                    .transform(StressHelper.setImpact(4.0))
+                    .transform(CDDStressValues.setImpact(4.0))
                     .item()
                     .transform(customItemModel())
                     .lang("Scorchia Millstone")
@@ -1221,7 +1223,7 @@ public class CDDBlocks {
                     .properties(p -> p.mapColor(MapColor.COLOR_BROWN))
                     .transform(pickaxeOnly())
                     .blockstate((c, p) -> p.simpleBlock(c.getEntry(), AssetLookup.partialBaseModel(c, p)))
-                    .transform(StressHelper.setImpact(4.0))
+                    .transform(CDDStressValues.setImpact(4.0))
                     .item()
                     .transform(customItemModel())
                     .lang("Scoria Millstone")
@@ -1232,7 +1234,7 @@ public class CDDBlocks {
                     .properties(p -> p.destroyTime(1.25f))
                     .transform(pickaxeOnly())
                     .blockstate((c, p) -> p.simpleBlock(c.getEntry(), AssetLookup.partialBaseModel(c, p)))
-                    .transform(StressHelper.setImpact(4.0))
+                    .transform(CDDStressValues.setImpact(4.0))
                     .item()
                     .transform(customItemModel())
                     .lang("Tuff Millstone")
@@ -1244,7 +1246,7 @@ public class CDDBlocks {
                     .properties(p -> p.mapColor(MapColor.WARPED_NYLIUM))
                     .transform(pickaxeOnly())
                     .blockstate((c, p) -> p.simpleBlock(c.getEntry(), AssetLookup.partialBaseModel(c, p)))
-                    .transform(StressHelper.setImpact(4.0))
+                    .transform(CDDStressValues.setImpact(4.0))
                     .item()
                     .transform(customItemModel())
                     .lang("Veridium Millstone")
@@ -1255,7 +1257,7 @@ public class CDDBlocks {
                     .properties(p -> p.destroyTime(1.25f))
                     .transform(pickaxeOnly())
                     .blockstate((c, p) -> p.simpleBlock(c.getEntry(), AssetLookup.partialBaseModel(c, p)))
-                    .transform(StressHelper.setImpact(4.0))
+                    .transform(CDDStressValues.setImpact(4.0))
                     .item()
                     .transform(customItemModel())
                     .lang("Dripstone Millstone")
@@ -1266,7 +1268,7 @@ public class CDDBlocks {
                     .properties(p -> p.destroyTime(1.25f))
                     .transform(pickaxeOnly())
                     .blockstate((c, p) -> p.simpleBlock(c.getEntry(), AssetLookup.partialBaseModel(c, p)))
-                    .transform(StressHelper.setImpact(4.0))
+                    .transform(CDDStressValues.setImpact(4.0))
                     .item()
                     .transform(customItemModel())
                     .lang("Deepslate Millstone")
@@ -1278,7 +1280,7 @@ public class CDDBlocks {
                     .properties(p -> p.mapColor(MapColor.COLOR_RED))
                     .transform(pickaxeOnly())
                     .blockstate((c, p) -> p.simpleBlock(c.getEntry(), AssetLookup.partialBaseModel(c, p)))
-                    .transform(StressHelper.setImpact(4.0))
+                    .transform(CDDStressValues.setImpact(4.0))
                     .item()
                     .transform(customItemModel())
                     .lang("Crimsite Millstone")
@@ -1289,7 +1291,7 @@ public class CDDBlocks {
                     .properties(p -> p.destroyTime(1.25f))
                     .transform(pickaxeOnly())
                     .blockstate((c, p) -> p.simpleBlock(c.getEntry(), AssetLookup.partialBaseModel(c, p)))
-                    .transform(StressHelper.setImpact(4.0))
+                    .transform(CDDStressValues.setImpact(4.0))
                     .item()
                     .transform(customItemModel())
                     .lang("Calcite Millstone")
@@ -1301,7 +1303,7 @@ public class CDDBlocks {
                     .properties(p -> p.mapColor(MapColor.COLOR_BLUE))
                     .transform(pickaxeOnly())
                     .blockstate((c, p) -> p.simpleBlock(c.getEntry(), AssetLookup.partialBaseModel(c, p)))
-                    .transform(StressHelper.setImpact(4.0))
+                    .transform(CDDStressValues.setImpact(4.0))
                     .item()
                     .transform(customItemModel())
                     .lang("Asurine Millstone")
@@ -1646,7 +1648,7 @@ public class CDDBlocks {
             .initialProperties(SharedProperties::softMetal)
             .properties(BlockBehaviour.Properties::noOcclusion)
             .transform(axeOrPickaxe())
-            .transform(StressHelper.setNoImpact())
+            .transform(CDDStressValues.setNoImpact())
             .blockstate((c, p) -> p.simpleBlock(c.getEntry(), AssetLookup.partialBaseModel(c, p)))
             .item()
             .transform(customItemModel())
@@ -2060,7 +2062,7 @@ public class CDDBlocks {
 
         for (String name : signs) {
 
-            REGISTRATE.block(name+"_sign", SignBlock::new)
+            BlockEntry<SignBlock> sign = REGISTRATE.block(name+"_sign", SignBlock::new)
                     .initialProperties(SharedProperties::wooden)
                     .properties(p -> p.sound(SoundType.NETHERITE_BLOCK))
                     .transform(axeOrPickaxe())
@@ -2073,6 +2075,8 @@ public class CDDBlocks {
                     .transform(customItemModel())
                     .lang(name.toUpperCase()+" Letter Sign")
                     .register();
+
+            LETTER_SIGNS.add(sign);
         }
 
 

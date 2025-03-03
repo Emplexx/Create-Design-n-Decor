@@ -9,6 +9,7 @@ import com.mangomilk.design_decor.registry.CDDBlockEntities;
 import com.mangomilk.design_decor.registry.CDDBlocks;
 import com.mangomilk.design_decor.registry.CDDItems;
 import com.mojang.logging.LogUtils;
+import com.simibubi.create.api.stress.BlockStressValues;
 import com.simibubi.create.foundation.data.CreateRegistrate;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
@@ -52,8 +53,9 @@ public class DesignDecor
 
         CDDCreativeModeTab.TABS.register(eventBus);
 
+        BlockStressValues.IMPACTS.registerProvider(CDDStressValues::getImpact);
 
-        //
+
 
         MinecraftForge.EVENT_BUS.register(this);
     }
