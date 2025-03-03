@@ -1,6 +1,6 @@
 modLoader="javafml"
 
-loaderVersion="[43,)"
+loaderVersion="[47,)"
 
 license="MIT"
 
@@ -27,7 +27,7 @@ dave's building extended but way better :3
 
     mandatory=true
 
-    versionRange="[43,)"
+    versionRange="[47,)"
 
     ordering="NONE"
 
