@@ -4,6 +4,7 @@ import com.mangomilk.design_decor.blocks.ceiling_fan.*;
 import com.mangomilk.design_decor.blocks.containers.blue.BlueContainerBlockEntity;
 import com.mangomilk.design_decor.blocks.containers.green.GreenContainerBlockEntity;
 import com.mangomilk.design_decor.blocks.containers.red.RedContainerBlockEntity;
+import com.mangomilk.design_decor.blocks.crushing_wheels.CDDCrushingWheelVisual;
 import com.mangomilk.design_decor.blocks.crushing_wheels.MmbCrushingWheelBlockEntity;
 import com.mangomilk.design_decor.blocks.crushing_wheels.MmbCrushingWheelControllerBlockEntity;
 import com.mangomilk.design_decor.blocks.gas_tank.GasTankBlockEntity;
@@ -14,8 +15,11 @@ import com.mangomilk.design_decor.blocks.millstone.DecoMillStoneBlockEntity;
 import com.mangomilk.design_decor.blocks.millstone.renderer.*;
 import com.mangomilk.design_decor.blocks.stepped_lever.SteppedLeverBlockEntity;
 import com.mangomilk.design_decor.blocks.stepped_lever.SteppedLeverRenderer;
+import com.mangomilk.design_decor.blocks.stepped_lever.SteppedLeverVisual;
 import com.simibubi.create.AllBlocks;
+import com.simibubi.create.AllPartialModels;
 import com.simibubi.create.content.kinetics.base.KineticBlockEntityRenderer;
+import com.simibubi.create.content.kinetics.base.SingleAxisRotatingVisual;
 import com.simibubi.create.content.kinetics.simpleRelays.BracketedKineticBlockEntity;
 import com.tterrag.registrate.util.entry.BlockEntityEntry;
 
@@ -51,7 +55,7 @@ public class CDDBlockEntities {
 
     public static final BlockEntityEntry<MmbCrushingWheelBlockEntity> MMB_CRUSHING_WHEEL = REGISTRATE
             .blockEntity("mmb_crushing_wheel", MmbCrushingWheelBlockEntity::new)
-//            .instance(() -> CutoutRotatingInstance::new, false)
+            .visual(() -> CDDCrushingWheelVisual::create, false)
             .validBlocks(
                     CDDBlocks.GRANITE_CRUSHING_WHEEL,
                     CDDBlocks.DIORITE_CRUSHING_WHEEL,
@@ -178,6 +182,7 @@ public class CDDBlockEntities {
     public static final BlockEntityEntry<SteppedLeverBlockEntity> STEPPED_LEVER = REGISTRATE
             .blockEntity("stepped_lever", SteppedLeverBlockEntity::new)
 //            .instance(() -> SteppedLeverInstance::new, false)
+            .visual(() -> SteppedLeverVisual::new, false)
             .validBlocks(CDDBlocks.STEPPED_LEVER)
             .renderer(() -> SteppedLeverRenderer::new)
             .register();
