@@ -8,6 +8,7 @@ public class CDDPartialModels {
     public static final PartialModel
             EMPTY = block("empty"),
 
+            COGWHEEL = block("industrial_gear"),
             SHAFTLESS_LARGE_COGWHEEL = block("industrial_gear_large"),
 
             GRANITE_MILLSTONE_COG = block("granite_millstone/inner"),

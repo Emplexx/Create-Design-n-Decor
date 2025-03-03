@@ -9,6 +9,7 @@ import com.mangomilk.design_decor.blocks.crushing_wheels.MmbCrushingWheelControl
 import com.mangomilk.design_decor.blocks.gas_tank.GasTankBlockEntity;
 import com.mangomilk.design_decor.blocks.horizontal_tanks.HorizontalFluidTankBlockEntity;
 import com.mangomilk.design_decor.blocks.industrial_gear.IndustrialGearRenderer;
+import com.mangomilk.design_decor.blocks.industrial_gear.IndustrialGearVisual;
 import com.mangomilk.design_decor.blocks.millstone.DecoMillStoneBlockEntity;
 import com.mangomilk.design_decor.blocks.millstone.renderer.*;
 import com.mangomilk.design_decor.blocks.stepped_lever.SteppedLeverBlockEntity;
@@ -24,7 +25,7 @@ public class CDDBlockEntities {
 
     public static final BlockEntityEntry<BracketedKineticBlockEntity> BRACKETED_KINETIC = REGISTRATE
             .blockEntity("simple_kinetic", BracketedKineticBlockEntity::new)
-//            .instance(() -> IndustrialGearInstance::new, false)
+            .visual(() -> IndustrialGearVisual::create, false)
             .validBlocks(CDDBlocks.COGWHEEL, CDDBlocks.LARGE_COGWHEEL)
             .renderer(() -> IndustrialGearRenderer::new)
             .register();
