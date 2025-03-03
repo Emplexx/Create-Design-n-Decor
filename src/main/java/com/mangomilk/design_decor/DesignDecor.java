@@ -1,6 +1,5 @@
 package com.mangomilk.design_decor;
 
-
 import com.mangomilk.design_decor.base.CDDCreativeModeTab;
 import com.mangomilk.design_decor.registry.CDDPartialModels;
 import com.mangomilk.design_decor.registry.CDDSpriteShifts;
@@ -20,26 +19,22 @@ import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.slf4j.Logger;
 
-
 @Mod(DesignDecor.MOD_ID)
-public class DesignDecor
-{
+public class DesignDecor {
 
     public static final String MOD_ID = "design_decor";
     public static final String NAME = "Create: Design n' Decor";
-    public static final CreateRegistrate REGISTRATE = CreateRegistrate.create(DesignDecor.MOD_ID);
 
-//            .setCreativeTab()
+    public static final CreateRegistrate REGISTRATE = CreateRegistrate
+            .create(DesignDecor.MOD_ID)
+            .setCreativeTab(CDDCreativeModeTab.CDD_TAB);
 
-//            .creativeModeTab(()-> CDDCreativeModeTab.BUILDING);
     public static final Logger LOGGER = LogUtils.getLogger();
 
-    public DesignDecor()
-    {
+    public DesignDecor() {
         IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
         REGISTRATE.registerEventListeners(eventBus);
-
 
         //
 
@@ -55,17 +50,11 @@ public class DesignDecor
 
         BlockStressValues.IMPACTS.registerProvider(CDDStressValues::getImpact);
 
-
-
         MinecraftForge.EVENT_BUS.register(this);
     }
 
-
     @SubscribeEvent
-    public void onServerStarting(ServerStartingEvent event)
-    {
-        LOGGER.info(":3");
-    }
+    public void onServerStarting(ServerStartingEvent event) { LOGGER.info(":3"); }
 
     public static ResourceLocation asResource(String path) {
         return new ResourceLocation(MOD_ID, path);

@@ -18,6 +18,7 @@ import com.mangomilk.design_decor.blocks.stepped_lever.SteppedLeverRenderer;
 import com.mangomilk.design_decor.blocks.stepped_lever.SteppedLeverVisual;
 import com.simibubi.create.AllBlocks;
 import com.simibubi.create.content.kinetics.base.KineticBlockEntityRenderer;
+import com.simibubi.create.content.kinetics.base.SingleAxisRotatingVisual;
 import com.simibubi.create.content.kinetics.simpleRelays.BracketedKineticBlockEntity;
 import com.tterrag.registrate.util.entry.BlockEntityEntry;
 
@@ -75,91 +76,91 @@ public class CDDBlockEntities {
 
     public static final BlockEntityEntry<DecoMillStoneBlockEntity> GRANITE_MILLSTONE =
             REGISTRATE.blockEntity("granite_millstone", DecoMillStoneBlockEntity::new)
-//                    .instance(() -> GraniteMillStoneCogInstance::new, false)
+                    .visual(() -> SingleAxisRotatingVisual.of(CDDPartialModels.GRANITE_MILLSTONE_COG))
                     .validBlocks(CDDBlocks.GRANITE_MILLSTONE)
                     .renderer(() -> GraniteMillStoneRenderer::new)
                     .register();
 
     public static final BlockEntityEntry<DecoMillStoneBlockEntity> DIORITE_MILLSTONE =
             REGISTRATE.blockEntity("diorite_millstone", DecoMillStoneBlockEntity::new)
-//                    .instance(() -> DioriteMillStoneCogInstance::new, false)
+                    .visual(() -> SingleAxisRotatingVisual.of(CDDPartialModels.DIORITE_MILLSTONE_COG))
                     .validBlocks(CDDBlocks.DIORITE_MILLSTONE)
                     .renderer(() -> DioriteMillStoneRenderer::new)
                     .register();
 
     public static final BlockEntityEntry<DecoMillStoneBlockEntity> LIMESTONE_MILLSTONE =
             REGISTRATE.blockEntity("limestone_millstone", DecoMillStoneBlockEntity::new)
-//                    .instance(() -> LimestoneMillStoneCogInstance::new, false)
+                    .visual(() -> SingleAxisRotatingVisual.of(CDDPartialModels.LIMESTONE_MILLSTONE_COG))
                     .validBlocks(CDDBlocks.LIMESTONE_MILLSTONE)
                     .renderer(() -> LimestoneMillStoneRenderer::new)
                     .register();
 
     public static final BlockEntityEntry<DecoMillStoneBlockEntity> SCORCHIA_MILLSTONE =
             REGISTRATE.blockEntity("scorchia_millstone", DecoMillStoneBlockEntity::new)
-//                    .instance(() -> ScorchiaMillStoneCogInstance::new, false)
+                    .visual(() -> SingleAxisRotatingVisual.of(CDDPartialModels. SCORCHIA_MILLSTONE_COG))
                     .validBlocks(CDDBlocks.SCORCHIA_MILLSTONE)
                     .renderer(() -> ScorchiaMillStoneRenderer::new)
                     .register();
 
     public static final BlockEntityEntry<DecoMillStoneBlockEntity> SCORIA_MILLSTONE =
             REGISTRATE.blockEntity("scoria_millstone", DecoMillStoneBlockEntity::new)
-//                    .instance(() -> ScoriaMillStoneCogInstance::new, false)
+                    .visual(() -> SingleAxisRotatingVisual.of(CDDPartialModels.SCORIA_MILLSTONE_COG))
                     .validBlocks(CDDBlocks.SCORIA_MILLSTONE)
                     .renderer(() -> ScoriaMillStoneRenderer::new)
                     .register();
 
     public static final BlockEntityEntry<DecoMillStoneBlockEntity> TUFF_MILLSTONE =
             REGISTRATE.blockEntity("tuff_millstone", DecoMillStoneBlockEntity::new)
-//                    .instance(() -> TuffMillStoneCogInstance::new, false)
+                    .visual(() -> SingleAxisRotatingVisual.of(CDDPartialModels.TUFF_MILLSTONE_COG))
                     .validBlocks(CDDBlocks.TUFF_MILLSTONE)
                     .renderer(() -> TuffMillStoneRenderer::new)
                     .register();
 
     public static final BlockEntityEntry<DecoMillStoneBlockEntity> VERIDIUM_MILLSTONE =
             REGISTRATE.blockEntity("veridium_millstone", DecoMillStoneBlockEntity::new)
-//                    .instance(() -> VeridiumMillStoneCogInstance::new, false)
+                    .visual(() -> SingleAxisRotatingVisual.of(CDDPartialModels.VERIDIUM_MILLSTONE_COG))
                     .validBlocks(CDDBlocks.VERIDIUM_MILLSTONE)
                     .renderer(() -> VeridiumMillStoneRenderer::new)
                     .register();
 
     public static final BlockEntityEntry<DecoMillStoneBlockEntity> DRIPSTONE_MILLSTONE =
             REGISTRATE.blockEntity("dripstone_millstone", DecoMillStoneBlockEntity::new)
-//                    .instance(() -> DripstoneMillStoneCogInstance::new, false)
+                    .visual(() -> SingleAxisRotatingVisual.of(CDDPartialModels.DRIPSTONE_MILLSTONE_COG))
                     .validBlocks(CDDBlocks.DRIPSTONE_MILLSTONE)
                     .renderer(() -> DripstoneMillStoneRenderer::new)
                     .register();
 
     public static final BlockEntityEntry<DecoMillStoneBlockEntity> DEEPSLATE_MILLSTONE =
             REGISTRATE.blockEntity("deepslate_millstone", DecoMillStoneBlockEntity::new)
-//                    .instance(() -> DeepslateMillStoneCogInstance::new, false)
+                    .visual(() -> SingleAxisRotatingVisual.of(CDDPartialModels.DEEPSLATE_MILLSTONE_COG))
                     .validBlocks(CDDBlocks.DEEPSLATE_MILLSTONE)
                     .renderer(() -> DeepslateMillStoneRenderer::new)
                     .register();
 
     public static final BlockEntityEntry<DecoMillStoneBlockEntity> CRIMSITE_MILLSTONE =
             REGISTRATE.blockEntity("crimsite_millstone", DecoMillStoneBlockEntity::new)
-//                    .instance(() -> CrimsiteMillStoneCogInstance::new, false)
+                    .visual(() -> SingleAxisRotatingVisual.of(CDDPartialModels.CRIMSITE_MILLSTONE_COG))
                     .validBlocks(CDDBlocks.CRIMSITE_MILLSTONE)
                     .renderer(() -> CrimsiteMillStoneRenderer::new)
                     .register();
 
     public static final BlockEntityEntry<DecoMillStoneBlockEntity> CALCITE_MILLSTONE =
             REGISTRATE.blockEntity("calcite_millstone", DecoMillStoneBlockEntity::new)
-//                    .instance(() -> CalciteMillStoneCogInstance::new, false)
+                    .visual(() -> SingleAxisRotatingVisual.of(CDDPartialModels.CALCITE_MILLSTONE_COG))
                     .validBlocks(CDDBlocks.CALCITE_MILLSTONE)
                     .renderer(() -> CalciteMillStoneRenderer::new)
                     .register();
 
     public static final BlockEntityEntry<DecoMillStoneBlockEntity> ASURINE_MILLSTONE =
             REGISTRATE.blockEntity("asurine_millstone", DecoMillStoneBlockEntity::new)
-//                    .instance(() -> AsurineMillStoneCogInstance::new, false)
+                    .visual(() -> SingleAxisRotatingVisual.of(CDDPartialModels.ASURINE_MILLSTONE_COG))
                     .validBlocks(CDDBlocks.ASURINE_MILLSTONE)
                     .renderer(() -> AsurineMillStoneRenderer::new)
                     .register();
 
     public static final BlockEntityEntry<DecoMillStoneBlockEntity> OCHRUM_MILLSTONE =
             REGISTRATE.blockEntity("ochrum_millstone", DecoMillStoneBlockEntity::new)
-//                    .instance(() -> OchrumMillStoneCogInstance::new, false)
+                    .visual(() -> SingleAxisRotatingVisual.of(CDDPartialModels.OCHRUM_MILLSTONE_COG))
                     .validBlocks(CDDBlocks.OCHRUM_MILLSTONE)
                     .renderer(() -> OchrumMillStoneRenderer::new)
                     .register();
@@ -179,7 +180,6 @@ public class CDDBlockEntities {
 
     public static final BlockEntityEntry<SteppedLeverBlockEntity> STEPPED_LEVER = REGISTRATE
             .blockEntity("stepped_lever", SteppedLeverBlockEntity::new)
-//            .instance(() -> SteppedLeverInstance::new, false)
             .visual(() -> SteppedLeverVisual::new, false)
             .validBlocks(CDDBlocks.STEPPED_LEVER)
             .renderer(() -> SteppedLeverRenderer::new)
@@ -187,7 +187,6 @@ public class CDDBlockEntities {
 
     public static final BlockEntityEntry<CeilingFanBlockEntity> CEILING_FAN = REGISTRATE
             .blockEntity("ceiling_fan", CeilingFanBlockEntity::new)
-//            .instance(() -> CeilingFanInstance::new, false)
             .visual(() -> CeilingFanVisual::new, false)
             .validBlocks(CDDBlocks.CEILING_FAN)
             .renderer(() -> CeilingFanRenderer::new)
