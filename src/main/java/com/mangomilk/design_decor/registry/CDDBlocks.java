@@ -971,8 +971,6 @@ public class CDDBlocks {
     //CRUSHING WHEELS
     public static final BlockEntry<MmbCrushingWheelControllerBlock> MMB_CRUSHING_WHEEL_CONTROLLER =
             REGISTRATE.block("crushing_wheel_controller", MmbCrushingWheelControllerBlock::new)
-//                  .initialProperties(new CrushingWheelBlock(BlockBehaviour.Properties.of()))
-//                   TODO .initialProperties(SharedProperties.CRUSHING_WHEEL_CONTROLLER_MATERIAL)
                     .properties(p -> p.mapColor(MapColor.STONE)
                             .noOcclusion()
                             .noLootTable()
@@ -1438,8 +1436,6 @@ public class CDDBlocks {
                     .onRegister(casingConnectivity((block, cc) -> cc.makeCasing(block, CDDSpriteShifts.ZINC_CHECKER_TILES)))
                     .properties(p -> p.mapColor(MapColor.COLOR_GRAY))
                     .properties(p -> p.sound(SoundType.COPPER))
-
-                    // TODO add recipe category to everywhere
                     .recipe((c, p) -> p.stonecutting(DataIngredient.tag(AllTags.forgeItemTag("ingots/zinc")), BB, c::get, 4))
                     .properties(BlockBehaviour.Properties::requiresCorrectToolForDrops)
                     .transform(pickaxeOnly())

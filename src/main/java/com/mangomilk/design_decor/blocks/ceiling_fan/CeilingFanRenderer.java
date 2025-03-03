@@ -26,7 +26,7 @@ public class CeilingFanRenderer extends KineticBlockEntityRenderer<CeilingFanBlo
                               int light, int overlay) {
         super.renderSafe(be, partialTicks, ms, buffer, light, overlay);
 
-        // TODO definitely crashes
+        // TODO backend instancing
 //        if (Backend.canUseInstancing(be.getLevel()))
 //            return;
 
