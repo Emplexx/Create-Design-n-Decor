@@ -4,6 +4,7 @@ import com.mangomilk.design_decor.registry.CDDPartialModels;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.simibubi.create.foundation.blockEntity.renderer.SafeBlockEntityRenderer;
+import dev.engine_room.flywheel.api.visualization.VisualizationManager;
 import net.createmod.catnip.math.AngleHelper;
 import net.createmod.catnip.render.CachedBuffers;
 import net.createmod.catnip.render.SuperByteBuffer;
@@ -24,8 +25,7 @@ public class SteppedLeverRenderer extends SafeBlockEntityRenderer<SteppedLeverBl
 	protected void renderSafe(SteppedLeverBlockEntity be, float partialTicks, PoseStack ms, MultiBufferSource buffer,
 							  int light, int overlay) {
 
-		// TODO backend instancing
-//		if (Backend.canUseInstancing(be.getLevel())) return;
+		if (VisualizationManager.supportsVisualization(be.getLevel())) return;
 
 		BlockState leverState = be.getBlockState();
 		float state = be.clientState.getValue(partialTicks);

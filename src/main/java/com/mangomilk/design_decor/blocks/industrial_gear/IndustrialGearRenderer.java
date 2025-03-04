@@ -6,6 +6,7 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import com.simibubi.create.content.kinetics.base.KineticBlockEntityRenderer;
 import com.simibubi.create.content.kinetics.simpleRelays.BracketedKineticBlockEntity;
 import com.simibubi.create.content.kinetics.simpleRelays.SimpleKineticBlockEntity;
+import dev.engine_room.flywheel.api.visualization.VisualizationManager;
 import net.createmod.catnip.animation.AnimationTickHolder;
 import net.createmod.catnip.render.CachedBuffers;
 import net.createmod.catnip.render.SuperByteBuffer;
@@ -24,9 +25,7 @@ public class IndustrialGearRenderer extends KineticBlockEntityRenderer<Bracketed
     protected void renderSafe(BracketedKineticBlockEntity be, float partialTicks, PoseStack ms,
                               MultiBufferSource buffer, int light, int overlay) {
 
-        // TODO flywheel backend instancing
-//        if (Backend.canUseInstancing(be.getLevel()))
-//            return;
+        if (VisualizationManager.supportsVisualization(be.getLevel())) return;
 
         if (!CDDBlocks.LARGE_COGWHEEL.has(be.getBlockState())) {
             super.renderSafe(be, partialTicks, ms, buffer, light, overlay);
