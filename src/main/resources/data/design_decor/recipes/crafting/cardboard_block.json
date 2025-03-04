@@ -1,4 +1,3 @@
-
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
@@ -8,13 +7,11 @@
   ],
   "key": {
     "P": {
-      "item": "minecraft:paper"
+      "item": "design_decor:cardboard_box"
     }
   },
   "result": {
-    "item": "design_decor:cardboard_sheet",
+    "item": "create:cardboard_block",
     "count": 1
-
-
   }
 }

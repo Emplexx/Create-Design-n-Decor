@@ -13,8 +13,8 @@ import static com.mangomilk.design_decor.DesignDecor.REGISTRATE;
 @ParametersAreNonnullByDefault
 @MethodsReturnNonnullByDefault
 public class CDDItems {
-    public static final ItemEntry<Item>
-            CARDBOARD_SHEET = REGISTRATE.item("cardboard_sheet", Item::new).register();
+//    public static final ItemEntry<Item>
+//            CARDBOARD_SHEET = REGISTRATE.item("cardboard_sheet", Item::new).register();
 
     public static void register() {}
 }

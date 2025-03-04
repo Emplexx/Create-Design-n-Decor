@@ -1,20 +1,12 @@
-
 {
-  "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "   ",
-    " PP",
-    " PP"
-  ],
-  "key": {
-    "P": {
-      "item": "design_decor:cardboard_sheet"
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "create:cardboard_block"
     }
-  },
+  ],
   "result": {
     "item": "design_decor:cardboard_box",
-    "count": 1
-
-
+    "count": 2
   }
 }
